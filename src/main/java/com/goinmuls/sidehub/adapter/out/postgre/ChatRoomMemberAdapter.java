@@ -1,6 +1,6 @@
 package com.goinmuls.sidehub.adapter.out.postgre;
 
-import com.goinmuls.sidehub.adapter.out.postgre.repository.ChatRoomMemberRepository;
+import com.goinmuls.sidehub.adapter.out.postgre.repository.ChatRoomMemberJpaRepository;
 import com.goinmuls.sidehub.application.port.out.FindChatRoomOutport;
 import com.goinmuls.sidehub.domain.ChatRoomMember;
 import lombok.RequiredArgsConstructor;
@@ -11,7 +11,7 @@ import java.util.List;
 @Component
 @RequiredArgsConstructor
 public class ChatRoomMemberAdapter implements FindChatRoomOutport {
-    private final ChatRoomMemberRepository chatRoomMemberRepository;
+    private final ChatRoomMemberJpaRepository chatRoomMemberJpaRepository;
 
     /**
      * 채팅방 멤버 조회
@@ -20,6 +20,6 @@ public class ChatRoomMemberAdapter implements FindChatRoomOutport {
      */
     @Override
     public List<ChatRoomMember> findAllByChatRoomId(Long chatRoomId) {
-        return chatRoomMemberRepository.findAllByChatRoomId(chatRoomId);
+        return chatRoomMemberJpaRepository.findAllByChatRoomId(chatRoomId);
     }
 }
