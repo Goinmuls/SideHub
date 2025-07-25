@@ -10,6 +10,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
+import java.util.NoSuchElementException;
 
 @Service
 @RequiredArgsConstructor
@@ -26,6 +27,11 @@ public class ChatRoomMemberApplicationService implements FindChatRoomMemberUseCa
     @Override
     public List<FindChatRoomMemberResponseDto> findAllByChatRoomId(Long chatRoomId) {
         List<ChatRoomMember> chatRoomMembers = chatRoomMemberOutport.findAllByChatRoomId(chatRoomId);
+
+        if (chatRoomMembers.isEmpty()) {
+            throw new NoSuchElementException("채팅방 멤버를 찾을 수 없습니다.");
+        }
+
         return chatRoomMembers.stream()
                 .map(chatRoomMemberFactory::toFindDto)
                 .toList();
