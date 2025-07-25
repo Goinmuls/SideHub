@@ -1,8 +1,10 @@
 package com.goinmuls.sidehub.adapter.out.postgre;
 
+import com.goinmuls.sidehub.adapter.out.postgre.entity.ChatRoomMemberEntity;
 import com.goinmuls.sidehub.adapter.out.postgre.repository.ChatRoomMemberJpaRepository;
 import com.goinmuls.sidehub.application.port.out.ChatRoomMemberOutport;
 import com.goinmuls.sidehub.domain.ChatRoomMember;
+import com.goinmuls.sidehub.domain.factory.ChatRoomMemberFactory;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
 
@@ -12,6 +14,7 @@ import java.util.List;
 @RequiredArgsConstructor
 public class ChatRoomMemberPersistenceAdapter implements ChatRoomMemberOutport {
     private final ChatRoomMemberJpaRepository chatRoomMemberJpaRepository;
+    private final ChatRoomMemberFactory chatRoomMemberFactory;
 
     /**
      * 채팅방 멤버 조회
@@ -20,6 +23,9 @@ public class ChatRoomMemberPersistenceAdapter implements ChatRoomMemberOutport {
      */
     @Override
     public List<ChatRoomMember> findAllByChatRoomId(Long chatRoomId) {
-        return chatRoomMemberJpaRepository.findAllByChatRoomId(chatRoomId);
+        List<ChatRoomMemberEntity> chatRoomMemberEntityList = chatRoomMemberJpaRepository.findAllByChatRoomId(chatRoomId);
+        return chatRoomMemberEntityList.stream()
+                .map(chatRoomMemberFactory::fromEntity)
+                .toList();
     }
 }

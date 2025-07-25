@@ -4,6 +4,7 @@ import com.goinmuls.sidehub.adapter.in.rest.dto.response.FindChatRoomMemberRespo
 import com.goinmuls.sidehub.adapter.out.postgre.entity.ChatRoomMemberEntity;
 import com.goinmuls.sidehub.domain.ChatRoomMember;
 import org.springframework.stereotype.Component;
+import org.springframework.util.ObjectUtils;
 
 @Component
 public class ChatRoomMemberFactory {
@@ -14,6 +15,10 @@ public class ChatRoomMemberFactory {
      * @return 도메인
      */
     public ChatRoomMember fromEntity(ChatRoomMemberEntity chatRoomMemberEntity) {
+        if (ObjectUtils.isEmpty(chatRoomMemberEntity)) {
+            return null;
+        }
+
         return ChatRoomMember.of(
                 chatRoomMemberEntity.getChatRoomMemberId(),
                 chatRoomMemberEntity.getChatRoomId(),
@@ -29,7 +34,16 @@ public class ChatRoomMemberFactory {
         );
     }
 
+    /**
+     * 도메인 -> 조회 응답 dto
+     * @param chatRoomMember 도메인
+     * @return 조회 응답 dto
+     */
     public FindChatRoomMemberResponseDto toFindDto(ChatRoomMember chatRoomMember) {
+        if (ObjectUtils.isEmpty(chatRoomMember)) {
+            return null;
+        }
+
         return FindChatRoomMemberResponseDto.of(
                 chatRoomMember.getChatRoomMemberId(),
                 chatRoomMember.getChatRoomId(),
