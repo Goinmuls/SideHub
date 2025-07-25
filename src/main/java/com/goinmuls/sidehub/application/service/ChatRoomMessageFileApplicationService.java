@@ -8,8 +8,10 @@ import com.goinmuls.sidehub.domain.factory.ChatRoomMessageFileFactory;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+import org.springframework.util.ObjectUtils;
 
 import java.util.List;
+import java.util.NoSuchElementException;
 
 @Service
 @RequiredArgsConstructor
@@ -26,6 +28,11 @@ public class ChatRoomMessageFileApplicationService implements FindChatRoomMessag
     @Override
     public List<FindChatRoomMessageFileResponseDto> findAllByChatRoomId(Long chatRoomId) {
         List<ChatRoomMessageFile> chatRoomMessageFiles = chatRoomMessageFileOutport.findAllByChatRoomId(chatRoomId);
+
+        if (ObjectUtils.isEmpty(chatRoomMessageFiles)) {
+            throw new NoSuchElementException("채팅방 첨부파일을 찾을 수 없습니다.");
+        }
+
         return chatRoomMessageFiles.stream()
                 .map(chatRoomMessageFileFactory::toFindResponseDto)
                 .toList();

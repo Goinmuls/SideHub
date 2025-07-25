@@ -21,7 +21,7 @@ public class ChatRoomMessageFileController {
      * @param chatRoomId 채팅방 아이디
      * @return 채팅방 첨부파일 리스트
      */
-    @GetMapping("/{chatRoomId}")
+    @GetMapping("/by-chat-room/{chatRoomId}")
     public List<FindChatRoomMessageFileResponseDto> findAllByChatRoomId(@PathVariable Long chatRoomId) {
         return findChatRoomMessageFileUseCase.findAllByChatRoomId(chatRoomId);
     }

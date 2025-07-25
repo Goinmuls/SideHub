@@ -21,7 +21,7 @@ public class ChatRoomMemberController {
      * @param chatRoomId 채팅방 아이디
      * @return 채팅방 멤버 리스트
      */
-    @GetMapping("/{chatRoomId}")
+    @GetMapping("/by-chat-room/{chatRoomId}")
     public List<FindChatRoomMemberResponseDto> findChatRoomMemberByChatRoomId(@PathVariable Long chatRoomId) {
         return findChatRoomMemberUseCase.findAllByChatRoomId(chatRoomId);
     }

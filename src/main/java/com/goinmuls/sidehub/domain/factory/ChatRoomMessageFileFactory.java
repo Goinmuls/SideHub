@@ -4,6 +4,7 @@ import com.goinmuls.sidehub.adapter.in.rest.dto.response.FindChatRoomMessageFile
 import com.goinmuls.sidehub.adapter.out.postgre.entity.ChatRoomMessageFileEntity;
 import com.goinmuls.sidehub.domain.ChatRoomMessageFile;
 import org.springframework.stereotype.Component;
+import org.springframework.util.ObjectUtils;
 
 @Component
 public class ChatRoomMessageFileFactory {
@@ -14,6 +15,10 @@ public class ChatRoomMessageFileFactory {
      * @return 도메인
      */
     public ChatRoomMessageFile fromEntity(ChatRoomMessageFileEntity chatRoomMessageFileEntity) {
+        if (ObjectUtils.isEmpty(chatRoomMessageFileEntity)) {
+            return null;
+        }
+
         return ChatRoomMessageFile.of(
                 chatRoomMessageFileEntity.getChatRoomMessageFileId(),
                 chatRoomMessageFileEntity.getChatRoomId(),
@@ -26,6 +31,10 @@ public class ChatRoomMessageFileFactory {
     }
 
     public FindChatRoomMessageFileResponseDto toFindResponseDto(ChatRoomMessageFile chatRoomMessageFile) {
+        if (ObjectUtils.isEmpty(chatRoomMessageFile)) {
+            return null;
+        }
+
         return FindChatRoomMessageFileResponseDto.of(
                 chatRoomMessageFile.getChatRoomMessageFileId(),
                 chatRoomMessageFile.getChatRoomId(),
