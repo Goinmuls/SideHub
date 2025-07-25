@@ -5,12 +5,14 @@ import com.goinmuls.sidehub.application.port.in.FindChatRoomMemberUseCase;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
 
 @RestController
 @RequiredArgsConstructor
+@RequestMapping("/api/v1/chat-room-member")
 public class ChatRoomMemberController {
     private final FindChatRoomMemberUseCase findChatRoomMemberUseCase;
 

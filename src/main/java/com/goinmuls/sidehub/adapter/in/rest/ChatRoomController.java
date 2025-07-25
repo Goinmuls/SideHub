@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-@RequestMapping("/v1/chat-room")
+@RequestMapping("/api/v1/chat-room")
 @RequiredArgsConstructor
 public class ChatRoomController {
     private final FindChatRoomUseCase findChatRoomUseCase;

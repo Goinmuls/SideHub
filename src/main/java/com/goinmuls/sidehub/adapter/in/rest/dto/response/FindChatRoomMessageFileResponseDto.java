@@ -1,4 +1,4 @@
-package com.goinmuls.sidehub.domain;
+package com.goinmuls.sidehub.adapter.in.rest.dto.response;
 
 import lombok.AccessLevel;
 import lombok.AllArgsConstructor;
@@ -10,8 +10,8 @@ import java.time.LocalDateTime;
 @Getter
 @AllArgsConstructor(access = AccessLevel.PRIVATE)
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
-public class ChatMessageFile {
-    private Long chatMessageFileId;
+public class FindChatRoomMessageFileResponseDto {
+    private Long chatRoomMessageFileId;
     private Long chatRoomId;
     private Long fileMetaId;
     private Long memberId;
@@ -19,10 +19,10 @@ public class ChatMessageFile {
     private LocalDateTime createdAt;
     private LocalDateTime updatedAt;
 
-    public static ChatMessageFile of (
-            Long chatMessageFileId, Long chatRoomId, Long fileMetaId, Long memberId,
+    public static FindChatRoomMessageFileResponseDto of (
+            Long chatRoomMessageFileId, Long chatRoomId, Long fileMetaId, Long memberId,
             boolean isDeleted, LocalDateTime createdAt, LocalDateTime updatedAt
     ) {
-        return new ChatMessageFile(chatMessageFileId, chatRoomId, fileMetaId, memberId, isDeleted, createdAt, updatedAt);
+        return new FindChatRoomMessageFileResponseDto(chatRoomMessageFileId, chatRoomId, fileMetaId, memberId, isDeleted, createdAt, updatedAt);
     }
 }

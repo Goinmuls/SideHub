@@ -11,15 +11,15 @@ import java.time.LocalDateTime;
 
 @Entity
 @Getter
-@Table(name = "chat_message_file")
+@Table(name = "chat_room_message_file")
 @AllArgsConstructor(access = AccessLevel.PRIVATE)
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
-public class ChatMessageFileEntity {
+public class ChatRoomMessageFileEntity {
     @Id
     @Comment(value = "채팅방 메세지 첨부파일 아이디")
-    @Column(name = "chat_message_file_id")
+    @Column(name = "chat_room_message_file_id")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long chatMessageFileId;
+    private Long chatRoomMessageFileId;
 
     @Comment(value = "채팅방 아이디")
     @Column(name = "chat_room_id")
