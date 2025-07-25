@@ -33,7 +33,7 @@ public class ChatRoomMemberApplicationService implements FindChatRoomMemberUseCa
         }
 
         return chatRoomMembers.stream()
-                .map(chatRoomMemberFactory::toFindDto)
+                .map(chatRoomMemberFactory::toFindResponseDto)
                 .toList();
     }
 }

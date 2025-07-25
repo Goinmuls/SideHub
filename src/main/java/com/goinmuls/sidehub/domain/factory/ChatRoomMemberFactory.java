@@ -39,7 +39,7 @@ public class ChatRoomMemberFactory {
      * @param chatRoomMember 도메인
      * @return 조회 응답 dto
      */
-    public FindChatRoomMemberResponseDto toFindDto(ChatRoomMember chatRoomMember) {
+    public FindChatRoomMemberResponseDto toFindResponseDto(ChatRoomMember chatRoomMember) {
         if (ObjectUtils.isEmpty(chatRoomMember)) {
             return null;
         }

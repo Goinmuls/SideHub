@@ -32,6 +32,6 @@ public class ChatRoomApplicationService implements FindChatRoomUseCase {
             throw new NoSuchElementException("채팅방을 찾을 수 없습니다.");
         }
 
-        return chatRoomFactory.toFindDto(chatRoom);
+        return chatRoomFactory.toFindResponseDto(chatRoom);
     }
 }
