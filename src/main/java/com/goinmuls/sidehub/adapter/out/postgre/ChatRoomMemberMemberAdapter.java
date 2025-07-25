@@ -1,7 +1,7 @@
 package com.goinmuls.sidehub.adapter.out.postgre;
 
 import com.goinmuls.sidehub.adapter.out.postgre.repository.ChatRoomMemberJpaRepository;
-import com.goinmuls.sidehub.application.port.out.ChatRoomOutport;
+import com.goinmuls.sidehub.application.port.out.ChatRoomMemberOutport;
 import com.goinmuls.sidehub.domain.ChatRoomMember;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
@@ -10,7 +10,7 @@ import java.util.List;
 
 @Component
 @RequiredArgsConstructor
-public class ChatRoomMemberAdapter implements ChatRoomOutport {
+public class ChatRoomMemberMemberAdapter implements ChatRoomMemberOutport {
     private final ChatRoomMemberJpaRepository chatRoomMemberJpaRepository;
 
     /**
