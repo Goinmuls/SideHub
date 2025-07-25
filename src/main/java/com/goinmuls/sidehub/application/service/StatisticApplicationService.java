@@ -1,0 +1,23 @@
+package com.goinmuls.sidehub.application.service;
+
+import com.goinmuls.sidehub.adapter.in.dto.GetStatisticRequest;
+import com.goinmuls.sidehub.application.port.in.GetStatisticUseCase;
+import com.goinmuls.sidehub.application.port.out.StatisticOutPort;
+import com.goinmuls.sidehub.domain.Statistic;
+import lombok.RequiredArgsConstructor;
+import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
+
+@Service
+@Transactional
+@RequiredArgsConstructor
+public class StatisticApplicationService implements GetStatisticUseCase {
+
+    private final StatisticOutPort statisticOutPort;
+
+    @Override
+    public Statistic getStatistic(GetStatisticRequest request) {
+        // todo: memberId의 member가 존재하는지 확인
+        return statisticOutPort.getStatistic(request);
+    }
+}
