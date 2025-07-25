@@ -10,7 +10,7 @@ import java.util.List;
 
 @Component
 @RequiredArgsConstructor
-public class ChatRoomMemberMemberAdapter implements ChatRoomMemberOutport {
+public class ChatRoomMemberPersistenceAdapter implements ChatRoomMemberOutport {
     private final ChatRoomMemberJpaRepository chatRoomMemberJpaRepository;
 
     /**
