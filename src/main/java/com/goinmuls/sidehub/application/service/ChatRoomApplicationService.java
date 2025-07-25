@@ -2,7 +2,7 @@ package com.goinmuls.sidehub.application.service;
 
 import com.goinmuls.sidehub.adapter.in.rest.dto.response.FindChatRoomResponseDto;
 import com.goinmuls.sidehub.application.port.in.FindChatRoomUseCase;
-import com.goinmuls.sidehub.application.port.out.ChatRoomOutport;
+import com.goinmuls.sidehub.application.port.out.ChatRoomOutPort;
 import com.goinmuls.sidehub.domain.ChatRoom;
 import com.goinmuls.sidehub.domain.factory.ChatRoomFactory;
 import lombok.RequiredArgsConstructor;
@@ -16,7 +16,7 @@ import java.util.NoSuchElementException;
 @RequiredArgsConstructor
 @Transactional(readOnly = true)
 public class ChatRoomApplicationService implements FindChatRoomUseCase {
-    private final ChatRoomOutport chatRoomOutport;
+    private final ChatRoomOutPort chatRoomOutport;
     private final ChatRoomFactory chatRoomFactory;
 
     /**

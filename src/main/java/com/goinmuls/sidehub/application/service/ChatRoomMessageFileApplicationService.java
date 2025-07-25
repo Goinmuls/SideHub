@@ -2,7 +2,7 @@ package com.goinmuls.sidehub.application.service;
 
 import com.goinmuls.sidehub.adapter.in.rest.dto.response.FindChatRoomMessageFileResponseDto;
 import com.goinmuls.sidehub.application.port.in.FindChatRoomMessageFileUseCase;
-import com.goinmuls.sidehub.application.port.out.ChatRoomMessageFileOutport;
+import com.goinmuls.sidehub.application.port.out.ChatRoomMessageFileOutPort;
 import com.goinmuls.sidehub.domain.ChatRoomMessageFile;
 import com.goinmuls.sidehub.domain.factory.ChatRoomMessageFileFactory;
 import lombok.RequiredArgsConstructor;
@@ -15,7 +15,7 @@ import java.util.List;
 @RequiredArgsConstructor
 @Transactional(readOnly = true)
 public class ChatRoomMessageFileApplicationService implements FindChatRoomMessageFileUseCase {
-    private final ChatRoomMessageFileOutport chatRoomMessageFileOutport;
+    private final ChatRoomMessageFileOutPort chatRoomMessageFileOutport;
     private final ChatRoomMessageFileFactory chatRoomMessageFileFactory;
 
     /**

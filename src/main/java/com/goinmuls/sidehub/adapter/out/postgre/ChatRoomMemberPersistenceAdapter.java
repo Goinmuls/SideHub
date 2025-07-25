@@ -2,7 +2,7 @@ package com.goinmuls.sidehub.adapter.out.postgre;
 
 import com.goinmuls.sidehub.adapter.out.postgre.entity.ChatRoomMemberEntity;
 import com.goinmuls.sidehub.adapter.out.postgre.repository.ChatRoomMemberJpaRepository;
-import com.goinmuls.sidehub.application.port.out.ChatRoomMemberOutport;
+import com.goinmuls.sidehub.application.port.out.ChatRoomMemberOutPort;
 import com.goinmuls.sidehub.domain.ChatRoomMember;
 import com.goinmuls.sidehub.domain.factory.ChatRoomMemberFactory;
 import lombok.RequiredArgsConstructor;
@@ -12,7 +12,7 @@ import java.util.List;
 
 @Component
 @RequiredArgsConstructor
-public class ChatRoomMemberPersistenceAdapter implements ChatRoomMemberOutport {
+public class ChatRoomMemberPersistenceAdapter implements ChatRoomMemberOutPort {
     private final ChatRoomMemberJpaRepository chatRoomMemberJpaRepository;
     private final ChatRoomMemberFactory chatRoomMemberFactory;
 

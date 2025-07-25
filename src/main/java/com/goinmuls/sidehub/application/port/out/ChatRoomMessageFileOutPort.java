@@ -4,6 +4,6 @@ import com.goinmuls.sidehub.domain.ChatRoomMessageFile;
 
 import java.util.List;
 
-public interface ChatRoomMessageFileOutport {
+public interface ChatRoomMessageFileOutPort {
     List<ChatRoomMessageFile> findAllByChatRoomId(Long chatRoomId);
 }
