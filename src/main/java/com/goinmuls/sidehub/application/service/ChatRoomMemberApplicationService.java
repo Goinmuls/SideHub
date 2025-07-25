@@ -2,7 +2,7 @@ package com.goinmuls.sidehub.application.service;
 
 import com.goinmuls.sidehub.adapter.in.rest.dto.response.FindChatRoomMemberResponseDto;
 import com.goinmuls.sidehub.application.port.in.FindChatRoomMemberUseCase;
-import com.goinmuls.sidehub.application.port.out.FindChatRoomOutport;
+import com.goinmuls.sidehub.application.port.out.ChatRoomOutport;
 import com.goinmuls.sidehub.domain.ChatRoomMember;
 import com.goinmuls.sidehub.domain.factory.ChatRoomMemberFactory;
 import lombok.RequiredArgsConstructor;
@@ -15,7 +15,7 @@ import java.util.List;
 @RequiredArgsConstructor
 @Transactional(readOnly = true)
 public class ChatRoomMemberApplicationService implements FindChatRoomMemberUseCase {
-    private final FindChatRoomOutport findChatRoomOutport;
+    private final ChatRoomOutport chatRoomOutport;
     private final ChatRoomMemberFactory chatRoomMemberFactory;
 
     /**
@@ -25,7 +25,7 @@ public class ChatRoomMemberApplicationService implements FindChatRoomMemberUseCa
      */
     @Override
     public List<FindChatRoomMemberResponseDto> findAllByChatRoomId(Long chatRoomId) {
-        List<ChatRoomMember> chatRoomMembers = findChatRoomOutport.findAllByChatRoomId(chatRoomId);
+        List<ChatRoomMember> chatRoomMembers = chatRoomOutport.findAllByChatRoomId(chatRoomId);
         return chatRoomMembers.stream()
                 .map(chatRoomMemberFactory::toFindDto)
                 .toList();
