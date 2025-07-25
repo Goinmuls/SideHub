@@ -1,4 +1,37 @@
 package com.goinmuls.sidehub.application.service;
 
-public class FileMetaApplicationService {
+import com.goinmuls.sidehub.adapter.in.rest.dto.response.FindFileMetaResponseDto;
+import com.goinmuls.sidehub.application.port.in.FindFileMetaUseCase;
+import com.goinmuls.sidehub.application.port.out.FileMetaOutPort;
+import com.goinmuls.sidehub.domain.FileMeta;
+import com.goinmuls.sidehub.domain.factory.FileMetaFactory;
+import lombok.RequiredArgsConstructor;
+import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
+import org.springframework.util.ObjectUtils;
+
+import java.util.NoSuchElementException;
+
+@Service
+@RequiredArgsConstructor
+@Transactional(readOnly = true)
+public class FileMetaApplicationService implements FindFileMetaUseCase {
+    private final FileMetaOutPort fileMetaOutPort;
+    private final FileMetaFactory fileMetaFactory;
+
+    /**
+     * 파일 메타 조회
+     * @param id 아이디
+     * @return 파일 메타
+     */
+    @Override
+    public FindFileMetaResponseDto findById(Long id) {
+        FileMeta fileMeta = fileMetaOutPort.findById(id);
+
+        if (ObjectUtils.isEmpty(fileMeta)) {
+            throw new NoSuchElementException("파일 메타 정보를 찾을 수 없습니다.");
+        }
+
+        return fileMetaFactory.toFindResponseDto(fileMeta);
+    }
 }
