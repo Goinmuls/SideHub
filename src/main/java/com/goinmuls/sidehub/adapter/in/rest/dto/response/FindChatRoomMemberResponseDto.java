@@ -1,4 +1,4 @@
-package com.goinmuls.sidehub.domain;
+package com.goinmuls.sidehub.adapter.in.rest.dto.response;
 
 import com.goinmuls.sidehub.domain.enums.ChatMemberRole;
 import lombok.AccessLevel;
@@ -11,7 +11,7 @@ import java.time.LocalDateTime;
 @Getter
 @AllArgsConstructor(access = AccessLevel.PRIVATE)
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
-public class ChatRoomMember {
+public class FindChatRoomMemberResponseDto {
     private Long chatRoomMemberId;
     private Long chatRoomId;
     private Long memberId;
@@ -24,10 +24,11 @@ public class ChatRoomMember {
     private LocalDateTime createdAt;
     private LocalDateTime updatedAt;
 
-    public static ChatRoomMember of (
+    public static FindChatRoomMemberResponseDto of(
             Long chatRoomMemberId, Long chatRoomId, Long memberId, ChatMemberRole role, Long kickerId,
             boolean isKicked, boolean isExited,
-            LocalDateTime kickedAt, LocalDateTime exitedAt, LocalDateTime createdAt, LocalDateTime updatedAt) {
-        return new ChatRoomMember(chatRoomMemberId, chatRoomId, memberId, role, kickerId, isKicked, isExited, kickedAt, exitedAt, createdAt, updatedAt);
+            LocalDateTime kickedAt, LocalDateTime exitedAt, LocalDateTime createdAt, LocalDateTime updatedAt
+    ) {
+        return new FindChatRoomMemberResponseDto(chatRoomMemberId, chatRoomId, memberId, role, kickerId, isKicked, isExited, kickedAt, exitedAt, createdAt, updatedAt);
     }
 }
