@@ -44,6 +44,7 @@ public class FileMetaEntity {
 
     @Comment("파일 MIME 타입")
     @Column(name = "mime_type")
+    @Enumerated(EnumType.STRING)
     private FileMimeType mimeType;
 
     @Comment("파일 사이즈")
