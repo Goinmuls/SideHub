@@ -17,12 +17,12 @@ public class ChatRoomMessageFile {
     private Long memberId;
     private boolean isDeleted;
     private LocalDateTime createdAt;
-    private LocalDateTime updatedAt;
+    private LocalDateTime deletedAt;
 
     public static ChatRoomMessageFile of (
             Long chatRoomMessageFileId, Long chatRoomId, Long fileMetaId, Long memberId,
-            boolean isDeleted, LocalDateTime createdAt, LocalDateTime updatedAt
+            boolean isDeleted, LocalDateTime createdAt, LocalDateTime deletedAt
     ) {
-        return new ChatRoomMessageFile(chatRoomMessageFileId, chatRoomId, fileMetaId, memberId, isDeleted, createdAt, updatedAt);
+        return new ChatRoomMessageFile(chatRoomMessageFileId, chatRoomId, fileMetaId, memberId, isDeleted, createdAt, deletedAt);
     }
 }

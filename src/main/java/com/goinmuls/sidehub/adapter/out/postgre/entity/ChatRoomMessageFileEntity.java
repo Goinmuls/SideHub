@@ -41,7 +41,7 @@ public class ChatRoomMessageFileEntity {
     @Column(name = "created_at")
     private LocalDateTime createdAt;
 
-    @Comment("수정 일시")
-    @Column(name = "updated_at")
-    private LocalDateTime updatedAt;
+    @Comment("삭제 일시")
+    @Column(name = "deleted_at")
+    private LocalDateTime deletedAt;
 }

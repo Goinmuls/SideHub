@@ -26,7 +26,7 @@ public class ChatRoomMessageFileFactory {
                 chatRoomMessageFileEntity.getMemberId(),
                 chatRoomMessageFileEntity.isDeleted(),
                 chatRoomMessageFileEntity.getCreatedAt(),
-                chatRoomMessageFileEntity.getUpdatedAt()
+                chatRoomMessageFileEntity.getDeletedAt()
         );
     }
 
@@ -42,7 +42,7 @@ public class ChatRoomMessageFileFactory {
                 chatRoomMessageFile.getMemberId(),
                 chatRoomMessageFile.isDeleted(),
                 chatRoomMessageFile.getCreatedAt(),
-                chatRoomMessageFile.getUpdatedAt()
+                chatRoomMessageFile.getDeletedAt()
         );
     }
 }
