@@ -10,6 +10,7 @@ import lombok.NoArgsConstructor;
 import org.hibernate.annotations.Comment;
 
 import java.time.LocalDateTime;
+import java.util.Objects;
 
 @Entity
 @Getter
@@ -42,4 +43,15 @@ public class NotificationEntity {
     @Comment("생성 일시")
     @Column(name = "created_at")
     private LocalDateTime createdAt;
+
+    @Override
+    public boolean equals(Object o) {
+        if (!(o instanceof NotificationEntity that)) return false;
+        return Objects.equals(notificationId, that.notificationId) && Objects.equals(senderId, that.senderId) && Objects.equals(content, that.content) && notificationStatus == that.notificationStatus && notificationType == that.notificationType && Objects.equals(createdAt, that.createdAt);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(notificationId, senderId, content, notificationStatus, notificationType, createdAt);
+    }
 }

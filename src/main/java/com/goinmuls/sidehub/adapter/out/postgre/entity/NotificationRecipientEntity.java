@@ -8,6 +8,7 @@ import lombok.NoArgsConstructor;
 import org.hibernate.annotations.Comment;
 
 import java.time.LocalDateTime;
+import java.util.Objects;
 
 
 @Entity
@@ -36,4 +37,15 @@ public class NotificationRecipientEntity {
 
     @Comment("알림 읽은 시각")
     private LocalDateTime readAt;
+
+    @Override
+    public boolean equals(Object o) {
+        if (!(o instanceof NotificationRecipientEntity that)) return false;
+        return isRead == that.isRead && Objects.equals(notificationRecipientId, that.notificationRecipientId) && Objects.equals(notificationId, that.notificationId) && Objects.equals(notificationTargetId, that.notificationTargetId) && Objects.equals(readAt, that.readAt);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(notificationRecipientId, notificationId, notificationTargetId, isRead, readAt);
+    }
 }

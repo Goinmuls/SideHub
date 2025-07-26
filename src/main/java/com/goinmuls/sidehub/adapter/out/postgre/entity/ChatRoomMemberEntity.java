@@ -9,6 +9,7 @@ import lombok.NoArgsConstructor;
 import org.hibernate.annotations.Comment;
 
 import java.time.LocalDateTime;
+import java.util.Objects;
 
 @Entity
 @Getter
@@ -62,4 +63,16 @@ public class ChatRoomMemberEntity {
     @Comment("수정 일시")
     @Column(name = "updated_at")
     private LocalDateTime updatedAt;
+
+    @Override
+    public boolean equals(Object o) {
+
+        if (!(o instanceof ChatRoomMemberEntity that)) return false;
+        return isKicked == that.isKicked && isExited == that.isExited && Objects.equals(chatRoomMemberId, that.chatRoomMemberId) && Objects.equals(chatRoomId, that.chatRoomId) && Objects.equals(memberId, that.memberId) && role == that.role && Objects.equals(kickerId, that.kickerId) && Objects.equals(kickedAt, that.kickedAt) && Objects.equals(exitedAt, that.exitedAt) && Objects.equals(createdAt, that.createdAt) && Objects.equals(updatedAt, that.updatedAt);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(chatRoomMemberId, chatRoomId, memberId, role, kickerId, isKicked, isExited, kickedAt, exitedAt, createdAt, updatedAt);
+    }
 }

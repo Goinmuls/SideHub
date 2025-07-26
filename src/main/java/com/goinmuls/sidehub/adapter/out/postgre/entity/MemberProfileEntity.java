@@ -9,6 +9,7 @@ import lombok.NoArgsConstructor;
 import org.hibernate.annotations.Comment;
 
 import java.time.LocalDateTime;
+import java.util.Objects;
 
 @Entity
 @Getter
@@ -50,4 +51,15 @@ public class MemberProfileEntity {
     @Comment("삭제 일시")
     @Column(name = "deleted_at")
     private LocalDateTime deletedAt;
+
+    @Override
+    public boolean equals(Object o) {
+        if (!(o instanceof MemberProfileEntity that)) return false;
+        return isDeleted == that.isDeleted && Objects.equals(memberProfileId, that.memberProfileId) && Objects.equals(fileMetaId, that.fileMetaId) && Objects.equals(memberId, that.memberId) && memberProfileType == that.memberProfileType && Objects.equals(createdAt, that.createdAt) && Objects.equals(updatedAt, that.updatedAt) && Objects.equals(deletedAt, that.deletedAt);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(memberProfileId, fileMetaId, memberId, memberProfileType, isDeleted, createdAt, updatedAt, deletedAt);
+    }
 }

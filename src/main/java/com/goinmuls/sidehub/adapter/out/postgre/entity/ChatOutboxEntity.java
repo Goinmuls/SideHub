@@ -9,6 +9,7 @@ import lombok.NoArgsConstructor;
 import org.hibernate.annotations.Comment;
 
 import java.time.LocalDateTime;
+import java.util.Objects;
 
 @Entity
 @Getter
@@ -51,5 +52,16 @@ public class ChatOutboxEntity {
             MessageStatus status, String topic, LocalDateTime createdAt, LocalDateTime updatedAt
     ) {
         return new ChatOutboxEntity(chatOutboxId, payload, eventType, status, topic, createdAt, updatedAt);
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (!(o instanceof ChatOutboxEntity that)) return false;
+        return Objects.equals(chatOutboxId, that.chatOutboxId) && Objects.equals(eventType, that.eventType) && Objects.equals(payload, that.payload) && status == that.status && Objects.equals(topic, that.topic) && Objects.equals(createdAt, that.createdAt) && Objects.equals(updatedAt, that.updatedAt);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(chatOutboxId, eventType, payload, status, topic, createdAt, updatedAt);
     }
 }
