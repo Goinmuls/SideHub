@@ -1,8 +1,8 @@
 package com.goinmuls.sidehub.application.service;
 
-import com.goinmuls.sidehub.adapter.in.rest.dto.response.FindChatRoomMessageFileResponseDto;
+import com.goinmuls.sidehub.adapter.in.rest.dto.response.GetChatRoomMessageFileResponseDto;
 import com.goinmuls.sidehub.adapter.out.postgre.mapper.ChatRoomMessageFileMapper;
-import com.goinmuls.sidehub.application.port.in.FindChatRoomMessageFileUseCase;
+import com.goinmuls.sidehub.application.port.in.GetChatRoomMessageFileUseCase;
 import com.goinmuls.sidehub.application.port.out.ChatRoomMessageFileOutPort;
 import com.goinmuls.sidehub.domain.ChatRoomMessageFile;
 import lombok.RequiredArgsConstructor;
@@ -15,7 +15,7 @@ import java.util.NoSuchElementException;
 @Service
 @RequiredArgsConstructor
 @Transactional(readOnly = true)
-public class ChatRoomMessageFileApplicationService implements FindChatRoomMessageFileUseCase {
+public class ChatRoomMessageFileApplicationService implements GetChatRoomMessageFileUseCase {
     private final ChatRoomMessageFileOutPort chatRoomMessageFileOutport;
     private final ChatRoomMessageFileMapper chatRoomMessageFileMapper;
 
@@ -25,7 +25,7 @@ public class ChatRoomMessageFileApplicationService implements FindChatRoomMessag
      * @return 채팅방 첨부파일
      */
     @Override
-    public List<FindChatRoomMessageFileResponseDto> getFilesInChatRoom(Long chatRoomId) {
+    public List<GetChatRoomMessageFileResponseDto> getFilesInChatRoom(Long chatRoomId) {
         List<ChatRoomMessageFile> chatRoomMessageFiles = chatRoomMessageFileOutport.findAllByChatRoomId(chatRoomId);
 
         if (chatRoomMessageFiles == null) {

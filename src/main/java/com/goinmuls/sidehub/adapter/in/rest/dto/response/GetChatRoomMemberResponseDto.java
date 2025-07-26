@@ -11,7 +11,7 @@ import java.time.LocalDateTime;
 @Getter
 @AllArgsConstructor(access = AccessLevel.PRIVATE)
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
-public class FindChatRoomMemberResponseDto {
+public class GetChatRoomMemberResponseDto {
     private Long chatRoomParticipantId;
     private Long chatRoomId;
     private Long memberId;
@@ -24,11 +24,11 @@ public class FindChatRoomMemberResponseDto {
     private LocalDateTime createdAt;
     private LocalDateTime updatedAt;
 
-    public static FindChatRoomMemberResponseDto of(
+    public static GetChatRoomMemberResponseDto of(
             Long chatRoomParticipantId, Long chatRoomId, Long memberId, ChatMemberRole role, Long kickerId,
             boolean isKicked, boolean isExited,
             LocalDateTime kickedAt, LocalDateTime exitedAt, LocalDateTime createdAt, LocalDateTime updatedAt
     ) {
-        return new FindChatRoomMemberResponseDto(chatRoomParticipantId, chatRoomId, memberId, role, kickerId, isKicked, isExited, kickedAt, exitedAt, createdAt, updatedAt);
+        return new GetChatRoomMemberResponseDto(chatRoomParticipantId, chatRoomId, memberId, role, kickerId, isKicked, isExited, kickedAt, exitedAt, createdAt, updatedAt);
     }
 }

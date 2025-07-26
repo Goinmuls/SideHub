@@ -1,18 +1,18 @@
 package com.goinmuls.sidehub.adapter.out.postgre.mapper;
 
-import com.goinmuls.sidehub.adapter.in.rest.dto.response.FindChatRoomMessageFileResponseDto;
+import com.goinmuls.sidehub.adapter.in.rest.dto.response.GetChatRoomMessageFileResponseDto;
 import com.goinmuls.sidehub.domain.ChatRoomMessageFile;
 import org.springframework.stereotype.Component;
 
 @Component
 public class ChatRoomMessageFileMapper {
 
-    public FindChatRoomMessageFileResponseDto toFindResponseDto(ChatRoomMessageFile chatRoomMessageFile) {
+    public GetChatRoomMessageFileResponseDto toFindResponseDto(ChatRoomMessageFile chatRoomMessageFile) {
         if (chatRoomMessageFile == null) {
             return null;
         }
 
-        return FindChatRoomMessageFileResponseDto.of(
+        return GetChatRoomMessageFileResponseDto.of(
                 chatRoomMessageFile.getChatRoomMessageFileId(),
                 chatRoomMessageFile.getChatRoomId(),
                 chatRoomMessageFile.getFileMetaId(),

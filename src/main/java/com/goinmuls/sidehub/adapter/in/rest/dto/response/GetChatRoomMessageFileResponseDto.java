@@ -1,6 +1,5 @@
 package com.goinmuls.sidehub.adapter.in.rest.dto.response;
 
-import com.goinmuls.sidehub.domain.enums.ChatRoomType;
 import lombok.AccessLevel;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -11,18 +10,19 @@ import java.time.LocalDateTime;
 @Getter
 @AllArgsConstructor(access = AccessLevel.PRIVATE)
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
-public class FindChatRoomResponseDto {
+public class GetChatRoomMessageFileResponseDto {
+    private Long chatRoomMessageFileId;
     private Long chatRoomId;
-    private ChatRoomType type;
-    private String name;
+    private Long fileMetaId;
+    private Long memberId;
     private boolean isDeleted;
     private LocalDateTime createdAt;
     private LocalDateTime updatedAt;
 
-    public static FindChatRoomResponseDto of (
-            Long chatRoomId, ChatRoomType type, String name,
+    public static GetChatRoomMessageFileResponseDto of (
+            Long chatRoomMessageFileId, Long chatRoomId, Long fileMetaId, Long memberId,
             boolean isDeleted, LocalDateTime createdAt, LocalDateTime updatedAt
     ) {
-        return new FindChatRoomResponseDto(chatRoomId, type, name, isDeleted, createdAt, updatedAt);
+        return new GetChatRoomMessageFileResponseDto(chatRoomMessageFileId, chatRoomId, fileMetaId, memberId, isDeleted, createdAt, updatedAt);
     }
 }

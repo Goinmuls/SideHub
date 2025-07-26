@@ -1,6 +1,6 @@
 package com.goinmuls.sidehub.adapter.out.postgre.mapper;
 
-import com.goinmuls.sidehub.adapter.in.rest.dto.response.FindNotificationRecipientResponseDto;
+import com.goinmuls.sidehub.adapter.in.rest.dto.response.GetNotificationRecipientResponseDto;
 import com.goinmuls.sidehub.domain.NotificationRecipient;
 import org.springframework.stereotype.Component;
 
@@ -12,12 +12,12 @@ public class NotificationRecipientMapper {
      * @param notificationRecipient 도메인
      * @return 조회 응답 dto
      */
-    public FindNotificationRecipientResponseDto toFindResponseDto(NotificationRecipient notificationRecipient) {
+    public GetNotificationRecipientResponseDto toFindResponseDto(NotificationRecipient notificationRecipient) {
         if (notificationRecipient == null) {
             return null;
         }
 
-        return FindNotificationRecipientResponseDto.of(
+        return GetNotificationRecipientResponseDto.of(
                 notificationRecipient.getNotificationRecipientId(),
                 notificationRecipient.getNotificationId(),
                 notificationRecipient.getNotificationTargetId(),

@@ -1,8 +1,8 @@
 package com.goinmuls.sidehub.application.service;
 
-import com.goinmuls.sidehub.adapter.in.rest.dto.response.FindMemberProfileResponseDto;
+import com.goinmuls.sidehub.adapter.in.rest.dto.response.GetMemberProfileResponseDto;
 import com.goinmuls.sidehub.adapter.out.postgre.mapper.MemberProfileMapper;
-import com.goinmuls.sidehub.application.port.in.FindMemberProfileUseCase;
+import com.goinmuls.sidehub.application.port.in.GetMemberProfileUseCase;
 import com.goinmuls.sidehub.application.port.out.MemberProfileOutPort;
 import com.goinmuls.sidehub.domain.MemberProfile;
 import lombok.RequiredArgsConstructor;
@@ -14,7 +14,7 @@ import java.util.NoSuchElementException;
 @Service
 @RequiredArgsConstructor
 @Transactional(readOnly = true)
-public class MemberProfileApplicationService implements FindMemberProfileUseCase {
+public class MemberProfileApplicationService implements GetMemberProfileUseCase {
     private final MemberProfileOutPort memberProfileOutPort;
     private final MemberProfileMapper memberProfileMapper;
 
@@ -24,7 +24,7 @@ public class MemberProfileApplicationService implements FindMemberProfileUseCase
      * @return 멤버 프로필
      */
     @Override
-    public FindMemberProfileResponseDto getMemberProfile(Long memberId) {
+    public GetMemberProfileResponseDto getMemberProfile(Long memberId) {
         MemberProfile memberProfile = memberProfileOutPort.findByMemberId(memberId);
 
         if (memberProfile == null) {

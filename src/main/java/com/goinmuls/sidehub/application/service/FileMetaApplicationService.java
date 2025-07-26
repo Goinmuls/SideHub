@@ -1,8 +1,8 @@
 package com.goinmuls.sidehub.application.service;
 
-import com.goinmuls.sidehub.adapter.in.rest.dto.response.FindFileMetaResponseDto;
+import com.goinmuls.sidehub.adapter.in.rest.dto.response.GetFileMetaResponseDto;
 import com.goinmuls.sidehub.adapter.out.postgre.mapper.FileMetaMapper;
-import com.goinmuls.sidehub.application.port.in.FindFileMetaUseCase;
+import com.goinmuls.sidehub.application.port.in.GetFileMetaUseCase;
 import com.goinmuls.sidehub.application.port.out.FileMetaOutPort;
 import com.goinmuls.sidehub.domain.FileMeta;
 import lombok.RequiredArgsConstructor;
@@ -14,7 +14,7 @@ import java.util.NoSuchElementException;
 @Service
 @RequiredArgsConstructor
 @Transactional(readOnly = true)
-public class FileMetaApplicationService implements FindFileMetaUseCase {
+public class FileMetaApplicationService implements GetFileMetaUseCase {
     private final FileMetaOutPort fileMetaOutPort;
     private final FileMetaMapper fileMetaMapper;
 
@@ -24,7 +24,7 @@ public class FileMetaApplicationService implements FindFileMetaUseCase {
      * @return 파일 메타
      */
     @Override
-    public FindFileMetaResponseDto getFileMeta(Long id) {
+    public GetFileMetaResponseDto getFileMeta(Long id) {
         FileMeta fileMeta = fileMetaOutPort.findById(id);
 
         if (fileMeta == null) {

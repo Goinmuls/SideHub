@@ -1,8 +1,8 @@
 package com.goinmuls.sidehub.application.service;
 
-import com.goinmuls.sidehub.adapter.in.rest.dto.response.FindChatRoomResponseDto;
+import com.goinmuls.sidehub.adapter.in.rest.dto.response.GetChatRoomResponseDto;
 import com.goinmuls.sidehub.adapter.out.postgre.mapper.ChatRoomMapper;
-import com.goinmuls.sidehub.application.port.in.FindChatRoomUseCase;
+import com.goinmuls.sidehub.application.port.in.GetChatRoomUseCase;
 import com.goinmuls.sidehub.application.port.out.ChatRoomOutPort;
 import com.goinmuls.sidehub.domain.ChatRoom;
 import lombok.RequiredArgsConstructor;
@@ -14,7 +14,7 @@ import java.util.NoSuchElementException;
 @Service
 @RequiredArgsConstructor
 @Transactional(readOnly = true)
-public class ChatRoomApplicationService implements FindChatRoomUseCase {
+public class ChatRoomApplicationService implements GetChatRoomUseCase {
     private final ChatRoomOutPort chatRoomOutport;
     private final ChatRoomMapper chatRoomMapper;
 
@@ -24,7 +24,7 @@ public class ChatRoomApplicationService implements FindChatRoomUseCase {
      * @return 채팅방
      */
     @Override
-    public FindChatRoomResponseDto getChatRoom(Long id) {
+    public GetChatRoomResponseDto getChatRoom(Long id) {
         ChatRoom chatRoom = chatRoomOutport.findById(id);
 
         if (chatRoom == null) {

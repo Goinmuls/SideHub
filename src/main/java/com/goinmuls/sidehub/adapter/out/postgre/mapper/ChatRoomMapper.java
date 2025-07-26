@@ -1,6 +1,6 @@
 package com.goinmuls.sidehub.adapter.out.postgre.mapper;
 
-import com.goinmuls.sidehub.adapter.in.rest.dto.response.FindChatRoomResponseDto;
+import com.goinmuls.sidehub.adapter.in.rest.dto.response.GetChatRoomResponseDto;
 import com.goinmuls.sidehub.domain.ChatRoom;
 import org.springframework.stereotype.Component;
 
@@ -12,12 +12,12 @@ public class ChatRoomMapper {
      * @param chatRoom 도메인
      * @return 조회 응답 dto
      */
-    public FindChatRoomResponseDto toFindResponseDto(ChatRoom chatRoom) {
+    public GetChatRoomResponseDto toFindResponseDto(ChatRoom chatRoom) {
         if (chatRoom == null) {
             return null;
         }
 
-        return FindChatRoomResponseDto.of(
+        return GetChatRoomResponseDto.of(
                 chatRoom.getChatRoomId(), chatRoom.getType(), chatRoom.getName(),
                 chatRoom.isDeleted(), chatRoom.getCreatedAt(), chatRoom.getUpdatedAt()
         );

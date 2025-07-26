@@ -1,8 +1,8 @@
 package com.goinmuls.sidehub.application.service;
 
-import com.goinmuls.sidehub.adapter.in.rest.dto.response.FindNotificationResponseDto;
+import com.goinmuls.sidehub.adapter.in.rest.dto.response.GetNotificationResponseDto;
 import com.goinmuls.sidehub.adapter.out.postgre.mapper.NotificationMapper;
-import com.goinmuls.sidehub.application.port.in.FindNotificationUseCase;
+import com.goinmuls.sidehub.application.port.in.GetNotificationUseCase;
 import com.goinmuls.sidehub.application.port.out.NotificationOutPort;
 import com.goinmuls.sidehub.domain.Notification;
 import lombok.RequiredArgsConstructor;
@@ -14,7 +14,7 @@ import java.util.NoSuchElementException;
 @Service
 @RequiredArgsConstructor
 @Transactional(readOnly = true)
-public class NotificationApplicationService implements FindNotificationUseCase {
+public class NotificationApplicationService implements GetNotificationUseCase {
     private final NotificationOutPort notificationOutPort;
     private final NotificationMapper notificationMapper;
 
@@ -24,7 +24,7 @@ public class NotificationApplicationService implements FindNotificationUseCase {
      * @return 알림
      */
     @Override
-    public FindNotificationResponseDto getNotification(Long id) {
+    public GetNotificationResponseDto getNotification(Long id) {
         Notification notification = notificationOutPort.findById(id);
 
         if (notification == null) {

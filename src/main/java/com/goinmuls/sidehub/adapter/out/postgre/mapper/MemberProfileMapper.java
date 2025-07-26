@@ -1,6 +1,6 @@
 package com.goinmuls.sidehub.adapter.out.postgre.mapper;
 
-import com.goinmuls.sidehub.adapter.in.rest.dto.response.FindMemberProfileResponseDto;
+import com.goinmuls.sidehub.adapter.in.rest.dto.response.GetMemberProfileResponseDto;
 import com.goinmuls.sidehub.domain.MemberProfile;
 import org.springframework.stereotype.Component;
 
@@ -12,12 +12,12 @@ public class MemberProfileMapper {
      * @param memberProfile 도메인
      * @return 조회 응답 dto
      */
-    public FindMemberProfileResponseDto toFindResponseDto(MemberProfile memberProfile) {
+    public GetMemberProfileResponseDto toFindResponseDto(MemberProfile memberProfile) {
         if (memberProfile == null) {
             return null;
         }
 
-        return FindMemberProfileResponseDto.of(
+        return GetMemberProfileResponseDto.of(
                 memberProfile.getMemberProfileId(),
                 memberProfile.getFileMetaId(),
                 memberProfile.getMemberId(),

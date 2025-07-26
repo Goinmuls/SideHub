@@ -11,7 +11,7 @@ import java.time.LocalDateTime;
 @Getter
 @AllArgsConstructor(access = AccessLevel.PRIVATE)
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
-public class FindFileMetaResponseDto {
+public class GetFileMetaResponseDto {
     private Long fileMetaId;
     private Long memberId;
     private String filePath;
@@ -23,11 +23,11 @@ public class FindFileMetaResponseDto {
     private LocalDateTime createdAt;
     private LocalDateTime deletedAt;
 
-    public static FindFileMetaResponseDto of(
+    public static GetFileMetaResponseDto of(
             Long fileMetaId, Long memberId, String filePath, int originalSize,
             boolean isCompressed, int compressedSize, FileMimeType mimeType,
             int size, LocalDateTime createdAt, LocalDateTime deletedAt
     ) {
-        return new FindFileMetaResponseDto(fileMetaId, memberId, filePath, originalSize, isCompressed, compressedSize, mimeType, size, createdAt, deletedAt);
+        return new GetFileMetaResponseDto(fileMetaId, memberId, filePath, originalSize, isCompressed, compressedSize, mimeType, size, createdAt, deletedAt);
     }
 }

@@ -1,6 +1,6 @@
 package com.goinmuls.sidehub.adapter.out.postgre.mapper;
 
-import com.goinmuls.sidehub.adapter.in.rest.dto.response.FindFileMetaResponseDto;
+import com.goinmuls.sidehub.adapter.in.rest.dto.response.GetFileMetaResponseDto;
 import com.goinmuls.sidehub.domain.FileMeta;
 import org.springframework.stereotype.Component;
 
@@ -12,12 +12,12 @@ public class FileMetaMapper {
      * @param fileMeta 도메인
      * @return 조회 응답 dto
      */
-    public FindFileMetaResponseDto toFindResponseDto(FileMeta fileMeta) {
+    public GetFileMetaResponseDto toFindResponseDto(FileMeta fileMeta) {
         if (fileMeta == null) {
             return null;
         }
 
-        return FindFileMetaResponseDto.of(
+        return GetFileMetaResponseDto.of(
                 fileMeta.getFileMetaId(),
                 fileMeta.getMemberId(),
                 fileMeta.getFilePath(),

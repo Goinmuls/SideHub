@@ -1,7 +1,7 @@
 package com.goinmuls.sidehub.adapter.in.rest;
 
-import com.goinmuls.sidehub.adapter.in.rest.dto.response.FindFileMetaResponseDto;
-import com.goinmuls.sidehub.application.port.in.FindFileMetaUseCase;
+import com.goinmuls.sidehub.adapter.in.rest.dto.response.GetFileMetaResponseDto;
+import com.goinmuls.sidehub.application.port.in.GetFileMetaUseCase;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.RestController;
 @RequiredArgsConstructor
 @RequestMapping("/api/v1/file-meta")
 public class FileMetaController {
-    private final FindFileMetaUseCase findFileMetaUseCase;
+    private final GetFileMetaUseCase getFileMetaUseCase;
 
     /**
      * 파일 메타 조회
@@ -20,7 +20,7 @@ public class FileMetaController {
      * @return 파일 메타
      */
     @GetMapping("/{id}")
-    public FindFileMetaResponseDto getFileMeta(@PathVariable Long id) {
-        return findFileMetaUseCase.getFileMeta(id);
+    public GetFileMetaResponseDto getFileMeta(@PathVariable Long id) {
+        return getFileMetaUseCase.getFileMeta(id);
     }
 }

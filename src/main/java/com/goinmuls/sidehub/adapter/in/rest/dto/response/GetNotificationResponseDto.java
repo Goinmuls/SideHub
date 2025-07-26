@@ -12,7 +12,7 @@ import java.time.LocalDateTime;
 @Getter
 @AllArgsConstructor(access = AccessLevel.PRIVATE)
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
-public class FindNotificationResponseDto {
+public class GetNotificationResponseDto {
     private Long notificationId;
     private Long senderId;
     private String content;
@@ -20,10 +20,10 @@ public class FindNotificationResponseDto {
     private NotificationType notificationType;
     private LocalDateTime createdAt;
 
-    public static FindNotificationResponseDto of(
+    public static GetNotificationResponseDto of(
             Long notificationId, Long senderId, String content,
             NotificationStatus notificationStatus, NotificationType notificationType, LocalDateTime createdAt
     ) {
-        return new FindNotificationResponseDto(notificationId, senderId, content, notificationStatus, notificationType, createdAt);
+        return new GetNotificationResponseDto(notificationId, senderId, content, notificationStatus, notificationType, createdAt);
     }
 }

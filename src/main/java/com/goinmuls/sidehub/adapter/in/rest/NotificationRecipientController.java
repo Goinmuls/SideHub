@@ -1,7 +1,7 @@
 package com.goinmuls.sidehub.adapter.in.rest;
 
-import com.goinmuls.sidehub.adapter.in.rest.dto.response.FindNotificationRecipientResponseDto;
-import com.goinmuls.sidehub.application.port.in.FindNotificationRecipientUseCase;
+import com.goinmuls.sidehub.adapter.in.rest.dto.response.GetNotificationRecipientResponseDto;
+import com.goinmuls.sidehub.application.port.in.GetNotificationRecipientUseCase;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -14,7 +14,7 @@ import java.util.List;
 @RequiredArgsConstructor
 @RequestMapping("/api/v1/notification-recipient")
 public class NotificationRecipientController {
-    private FindNotificationRecipientUseCase findNotificationRecipientUseCase;
+    private final GetNotificationRecipientUseCase getNotificationRecipientUseCase;
 
     /**
      * 알림 대상자 조회
@@ -22,7 +22,7 @@ public class NotificationRecipientController {
      * @return 알림 대상
      */
     @GetMapping("/by-notification/{notificationId}")
-    public List<FindNotificationRecipientResponseDto> getRecipientsOfNotification(@PathVariable Long notificationId) {
-        return findNotificationRecipientUseCase.getRecipientsOfNotification(notificationId);
+    public List<GetNotificationRecipientResponseDto> getRecipientsOfNotification(@PathVariable Long notificationId) {
+        return getNotificationRecipientUseCase.getRecipientsOfNotification(notificationId);
     }
 }

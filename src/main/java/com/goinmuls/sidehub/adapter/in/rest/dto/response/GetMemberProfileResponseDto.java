@@ -11,7 +11,7 @@ import java.time.LocalDateTime;
 @Getter
 @AllArgsConstructor(access = AccessLevel.PRIVATE)
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
-public class FindMemberProfileResponseDto {
+public class GetMemberProfileResponseDto {
     private Long memberProfileId;
     private Long fileMetaId;
     private Long memberId;
@@ -21,10 +21,10 @@ public class FindMemberProfileResponseDto {
     private LocalDateTime updatedAt;
     private LocalDateTime deletedAt;
 
-    public static FindMemberProfileResponseDto of(
+    public static GetMemberProfileResponseDto of(
             Long memberProfileId, Long fileMetaId, Long memberId, MemberProfileType memberProfileType,
             boolean isDeleted, LocalDateTime createdAt, LocalDateTime updatedAt, LocalDateTime deletedAt
     ) {
-        return new FindMemberProfileResponseDto(memberProfileId, fileMetaId, memberId, memberProfileType, isDeleted, createdAt, updatedAt, deletedAt);
+        return new GetMemberProfileResponseDto(memberProfileId, fileMetaId, memberId, memberProfileType, isDeleted, createdAt, updatedAt, deletedAt);
     }
 }

@@ -1,7 +1,7 @@
 package com.goinmuls.sidehub.adapter.in.rest;
 
-import com.goinmuls.sidehub.adapter.in.rest.dto.response.FindChatRoomMemberResponseDto;
-import com.goinmuls.sidehub.application.port.in.FindChatRoomParticipantUseCase;
+import com.goinmuls.sidehub.adapter.in.rest.dto.response.GetChatRoomMemberResponseDto;
+import com.goinmuls.sidehub.application.port.in.GetChatRoomParticipantUseCase;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -14,7 +14,7 @@ import java.util.List;
 @RequiredArgsConstructor
 @RequestMapping("/api/v1/chat-room-member")
 public class ChatRoomMemberController {
-    private final FindChatRoomParticipantUseCase findChatRoomParticipantUseCase;
+    private final GetChatRoomParticipantUseCase getChatRoomParticipantUseCase;
 
     /**
      * 채팅방 멤버 조회
@@ -22,7 +22,7 @@ public class ChatRoomMemberController {
      * @return 채팅방 멤버 리스트
      */
     @GetMapping("/by-chat-room/{chatRoomId}")
-    public List<FindChatRoomMemberResponseDto> getParticipantsInChatRoom(@PathVariable Long chatRoomId) {
-        return findChatRoomParticipantUseCase.getParticipantsInChatRoom(chatRoomId);
+    public List<GetChatRoomMemberResponseDto> getParticipantsInChatRoom(@PathVariable Long chatRoomId) {
+        return getChatRoomParticipantUseCase.getParticipantsInChatRoom(chatRoomId);
     }
 }

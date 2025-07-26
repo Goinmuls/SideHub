@@ -1,7 +1,7 @@
 package com.goinmuls.sidehub.adapter.in.rest;
 
-import com.goinmuls.sidehub.adapter.in.rest.dto.response.FindNotificationResponseDto;
-import com.goinmuls.sidehub.application.port.in.FindNotificationUseCase;
+import com.goinmuls.sidehub.adapter.in.rest.dto.response.GetNotificationResponseDto;
+import com.goinmuls.sidehub.application.port.in.GetNotificationUseCase;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.RestController;
 @RequiredArgsConstructor
 @RequestMapping("/api/v1/notification")
 public class NotificationController {
-    private final FindNotificationUseCase findNotificationUseCase;
+    private final GetNotificationUseCase getNotificationUseCase;
 
     /**
      * 알림 조회
@@ -20,7 +20,7 @@ public class NotificationController {
      * @return 알림
      */
     @GetMapping("/{id}")
-    public FindNotificationResponseDto getNotification(@PathVariable Long id) {
-        return findNotificationUseCase.getNotification(id);
+    public GetNotificationResponseDto getNotification(@PathVariable Long id) {
+        return getNotificationUseCase.getNotification(id);
     }
 }

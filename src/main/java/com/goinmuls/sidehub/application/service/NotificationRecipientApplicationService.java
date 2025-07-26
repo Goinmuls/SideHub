@@ -1,8 +1,8 @@
 package com.goinmuls.sidehub.application.service;
 
-import com.goinmuls.sidehub.adapter.in.rest.dto.response.FindNotificationRecipientResponseDto;
+import com.goinmuls.sidehub.adapter.in.rest.dto.response.GetNotificationRecipientResponseDto;
 import com.goinmuls.sidehub.adapter.out.postgre.mapper.NotificationRecipientMapper;
-import com.goinmuls.sidehub.application.port.in.FindNotificationRecipientUseCase;
+import com.goinmuls.sidehub.application.port.in.GetNotificationRecipientUseCase;
 import com.goinmuls.sidehub.application.port.out.NotificationRecipientOutPort;
 import com.goinmuls.sidehub.domain.NotificationRecipient;
 import com.goinmuls.sidehub.infrastructure.util.CollectionUtils;
@@ -16,7 +16,7 @@ import java.util.NoSuchElementException;
 @Service
 @RequiredArgsConstructor
 @Transactional(readOnly = true)
-public class NotificationRecipientApplicationService implements FindNotificationRecipientUseCase {
+public class NotificationRecipientApplicationService implements GetNotificationRecipientUseCase {
     private final NotificationRecipientOutPort notificationRecipientOutPort;
     private final NotificationRecipientMapper notificationRecipientMapper;
 
@@ -26,7 +26,7 @@ public class NotificationRecipientApplicationService implements FindNotification
      * @return 알림 대상
      */
     @Override
-    public List<FindNotificationRecipientResponseDto> getRecipientsOfNotification(Long notificationId) {
+    public List<GetNotificationRecipientResponseDto> getRecipientsOfNotification(Long notificationId) {
         List<NotificationRecipient> notificationRecipients = notificationRecipientOutPort.findAllByNotificationId(notificationId);
 
         if (CollectionUtils.isNullOrEmpty(notificationRecipients)) {

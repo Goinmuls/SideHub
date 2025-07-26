@@ -1,8 +1,8 @@
 package com.goinmuls.sidehub.application.service;
 
-import com.goinmuls.sidehub.adapter.in.rest.dto.response.FindChatRoomMemberResponseDto;
+import com.goinmuls.sidehub.adapter.in.rest.dto.response.GetChatRoomMemberResponseDto;
 import com.goinmuls.sidehub.adapter.out.postgre.mapper.ChatRoomParticipantMapper;
-import com.goinmuls.sidehub.application.port.in.FindChatRoomParticipantUseCase;
+import com.goinmuls.sidehub.application.port.in.GetChatRoomParticipantUseCase;
 import com.goinmuls.sidehub.application.port.out.ChatRoomParticipantOutPort;
 import com.goinmuls.sidehub.domain.ChatRoomParticipant;
 import com.goinmuls.sidehub.infrastructure.util.CollectionUtils;
@@ -16,7 +16,7 @@ import java.util.NoSuchElementException;
 @Service
 @RequiredArgsConstructor
 @Transactional(readOnly = true)
-public class ChatRoomParticipantApplicationService implements FindChatRoomParticipantUseCase {
+public class ChatRoomParticipantApplicationService implements GetChatRoomParticipantUseCase {
     private final ChatRoomParticipantOutPort chatRoomParticipantOutport;
     private final ChatRoomParticipantMapper chatRoomParticipantMapper;
 
@@ -26,7 +26,7 @@ public class ChatRoomParticipantApplicationService implements FindChatRoomPartic
      * @return 채팅방 멤버 리스트
      */
     @Override
-    public List<FindChatRoomMemberResponseDto> getParticipantsInChatRoom(Long chatRoomId) {
+    public List<GetChatRoomMemberResponseDto> getParticipantsInChatRoom(Long chatRoomId) {
         List<ChatRoomParticipant> chatRoomParticipants = chatRoomParticipantOutport.findAllByChatRoomId(chatRoomId);
 
         if (CollectionUtils.isNullOrEmpty(chatRoomParticipants)) {

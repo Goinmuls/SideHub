@@ -1,7 +1,7 @@
 package com.goinmuls.sidehub.adapter.in.rest;
 
-import com.goinmuls.sidehub.adapter.in.rest.dto.response.FindChatRoomMessageFileResponseDto;
-import com.goinmuls.sidehub.application.port.in.FindChatRoomMessageFileUseCase;
+import com.goinmuls.sidehub.adapter.in.rest.dto.response.GetChatRoomMessageFileResponseDto;
+import com.goinmuls.sidehub.application.port.in.GetChatRoomMessageFileUseCase;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -14,7 +14,7 @@ import java.util.List;
 @RequiredArgsConstructor
 @RequestMapping("/api/v1/chat-message-file")
 public class ChatRoomMessageFileController {
-    private final FindChatRoomMessageFileUseCase findChatRoomMessageFileUseCase;
+    private final GetChatRoomMessageFileUseCase getChatRoomMessageFileUseCase;
 
     /***
      * 채팅방 첨부파일 조회
@@ -22,7 +22,7 @@ public class ChatRoomMessageFileController {
      * @return 채팅방 첨부파일 리스트
      */
     @GetMapping("/by-chat-room/{chatRoomId}")
-    public List<FindChatRoomMessageFileResponseDto> getFilesInChatRoom(@PathVariable Long chatRoomId) {
-        return findChatRoomMessageFileUseCase.getFilesInChatRoom(chatRoomId);
+    public List<GetChatRoomMessageFileResponseDto> getFilesInChatRoom(@PathVariable Long chatRoomId) {
+        return getChatRoomMessageFileUseCase.getFilesInChatRoom(chatRoomId);
     }
 }
