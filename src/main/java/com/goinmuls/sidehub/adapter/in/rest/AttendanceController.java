@@ -1,6 +1,6 @@
 package com.goinmuls.sidehub.adapter.in.rest;
 
-import com.goinmuls.sidehub.application.port.in.CreateAttendanceUseCase;
+import com.goinmuls.sidehub.application.port.in.CheckAttendanceUseCase;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.RestController;
 @RequiredArgsConstructor
 @RestController
 public class AttendanceController {
-    private final CreateAttendanceUseCase createAttendanceUseCase;
+    private final CheckAttendanceUseCase checkAttendanceUseCase;
 
     /**
      * 출석체크 insert 컨트롤러
@@ -22,7 +22,7 @@ public class AttendanceController {
      */
     @PostMapping("/check")
     public ResponseEntity<Void> checkAttendance(@RequestParam Long memberId) {
-        createAttendanceUseCase.checkAttendance(memberId);
+        checkAttendanceUseCase.checkAttendance(memberId);
         return ResponseEntity.status(HttpStatus.CREATED).build();
     }
 }
