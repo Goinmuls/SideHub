@@ -9,8 +9,8 @@ import lombok.NoArgsConstructor;
 import java.time.LocalDateTime;
 
 @Getter
-@NoArgsConstructor(access = AccessLevel.PROTECTED)
 @AllArgsConstructor(access = AccessLevel.PRIVATE)
+@NoArgsConstructor(access = AccessLevel.PROTECTED)
 public class ChatOutbox {
     private Long chatOutboxId;
     private String payload;
