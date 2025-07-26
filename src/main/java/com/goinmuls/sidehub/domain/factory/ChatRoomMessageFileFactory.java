@@ -1,10 +1,8 @@
 package com.goinmuls.sidehub.domain.factory;
 
-import com.goinmuls.sidehub.adapter.in.rest.dto.response.FindChatRoomMessageFileResponseDto;
 import com.goinmuls.sidehub.adapter.out.postgre.entity.ChatRoomMessageFileEntity;
 import com.goinmuls.sidehub.domain.ChatRoomMessageFile;
 import org.springframework.stereotype.Component;
-import org.springframework.util.ObjectUtils;
 
 @Component
 public class ChatRoomMessageFileFactory {
@@ -15,7 +13,7 @@ public class ChatRoomMessageFileFactory {
      * @return 도메인
      */
     public ChatRoomMessageFile fromEntity(ChatRoomMessageFileEntity chatRoomMessageFileEntity) {
-        if (ObjectUtils.isEmpty(chatRoomMessageFileEntity)) {
+        if (chatRoomMessageFileEntity == null) {
             return null;
         }
 

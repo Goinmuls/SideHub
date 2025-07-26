@@ -8,7 +8,6 @@ import com.goinmuls.sidehub.domain.ChatRoom;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-import org.springframework.util.ObjectUtils;
 
 import java.util.NoSuchElementException;
 
@@ -28,7 +27,7 @@ public class ChatRoomApplicationService implements FindChatRoomUseCase {
     public FindChatRoomResponseDto findById(Long id) {
         ChatRoom chatRoom = chatRoomOutport.findById(id);
 
-        if (ObjectUtils.isEmpty(chatRoom)) {
+        if (chatRoom == null) {
             throw new NoSuchElementException("채팅방을 찾을 수 없습니다.");
         }
 

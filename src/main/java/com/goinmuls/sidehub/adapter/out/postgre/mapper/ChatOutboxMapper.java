@@ -3,7 +3,6 @@ package com.goinmuls.sidehub.adapter.out.postgre.mapper;
 import com.goinmuls.sidehub.adapter.out.postgre.entity.ChatOutboxEntity;
 import com.goinmuls.sidehub.domain.ChatOutbox;
 import org.springframework.stereotype.Component;
-import org.springframework.util.ObjectUtils;
 
 @Component
 public class ChatOutboxMapper {
@@ -14,7 +13,7 @@ public class ChatOutboxMapper {
      * @return 엔티티
      */
     public ChatOutboxEntity toEntity(ChatOutbox chatOutbox) {
-        if (ObjectUtils.isEmpty(chatOutbox)) {
+        if (chatOutbox == null) {
             return null;
         }
 

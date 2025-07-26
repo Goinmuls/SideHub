@@ -3,7 +3,6 @@ package com.goinmuls.sidehub.adapter.out.postgre.mapper;
 import com.goinmuls.sidehub.adapter.in.rest.dto.response.FindFileMetaResponseDto;
 import com.goinmuls.sidehub.domain.FileMeta;
 import org.springframework.stereotype.Component;
-import org.springframework.util.ObjectUtils;
 
 @Component
 public class FileMetaMapper {
@@ -14,7 +13,7 @@ public class FileMetaMapper {
      * @return 조회 응답 dto
      */
     public FindFileMetaResponseDto toFindResponseDto(FileMeta fileMeta) {
-        if (ObjectUtils.isEmpty(fileMeta)) {
+        if (fileMeta == null) {
             return null;
         }
 

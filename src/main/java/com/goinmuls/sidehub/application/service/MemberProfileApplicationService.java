@@ -8,7 +8,6 @@ import com.goinmuls.sidehub.domain.MemberProfile;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-import org.springframework.util.ObjectUtils;
 
 import java.util.NoSuchElementException;
 
@@ -28,7 +27,7 @@ public class MemberProfileApplicationService implements FindMemberProfileUseCase
     public FindMemberProfileResponseDto findByMemberId(Long memberId) {
         MemberProfile memberProfile = memberProfileOutPort.findByMemberId(memberId);
 
-        if (ObjectUtils.isEmpty(memberProfile)) {
+        if (memberProfile == null) {
             throw new NoSuchElementException("멤버 프로필을 찾을 수 없습니다.");
         }
         return memberProfileMapper.toFindResponseDto(memberProfile);

@@ -5,6 +5,7 @@ import com.goinmuls.sidehub.adapter.out.postgre.mapper.ChatRoomMemberMapper;
 import com.goinmuls.sidehub.application.port.in.FindChatRoomMemberUseCase;
 import com.goinmuls.sidehub.application.port.out.ChatRoomMemberOutPort;
 import com.goinmuls.sidehub.domain.ChatRoomMember;
+import com.goinmuls.sidehub.infrastructure.util.CollectionUtils;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -28,7 +29,7 @@ public class ChatRoomMemberApplicationService implements FindChatRoomMemberUseCa
     public List<FindChatRoomMemberResponseDto> findAllByChatRoomId(Long chatRoomId) {
         List<ChatRoomMember> chatRoomMembers = chatRoomMemberOutport.findAllByChatRoomId(chatRoomId);
 
-        if (chatRoomMembers.isEmpty()) {
+        if (CollectionUtils.isNullOrEmpty(chatRoomMembers)) {
             throw new NoSuchElementException("채팅방 멤버를 찾을 수 없습니다.");
         }
 

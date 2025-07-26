@@ -8,7 +8,6 @@ import com.goinmuls.sidehub.domain.FileMeta;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-import org.springframework.util.ObjectUtils;
 
 import java.util.NoSuchElementException;
 
@@ -28,7 +27,7 @@ public class FileMetaApplicationService implements FindFileMetaUseCase {
     public FindFileMetaResponseDto findById(Long id) {
         FileMeta fileMeta = fileMetaOutPort.findById(id);
 
-        if (ObjectUtils.isEmpty(fileMeta)) {
+        if (fileMeta == null) {
             throw new NoSuchElementException("파일 메타 정보를 찾을 수 없습니다.");
         }
 

@@ -1,10 +1,8 @@
 package com.goinmuls.sidehub.domain.factory;
 
-import com.goinmuls.sidehub.adapter.in.rest.dto.response.FindChatRoomMemberResponseDto;
 import com.goinmuls.sidehub.adapter.out.postgre.entity.ChatRoomMemberEntity;
 import com.goinmuls.sidehub.domain.ChatRoomMember;
 import org.springframework.stereotype.Component;
-import org.springframework.util.ObjectUtils;
 
 @Component
 public class ChatRoomMemberFactory {
@@ -15,7 +13,7 @@ public class ChatRoomMemberFactory {
      * @return 도메인
      */
     public ChatRoomMember fromEntity(ChatRoomMemberEntity chatRoomMemberEntity) {
-        if (ObjectUtils.isEmpty(chatRoomMemberEntity)) {
+        if (chatRoomMemberEntity == null) {
             return null;
         }
 

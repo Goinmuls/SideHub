@@ -3,7 +3,6 @@ package com.goinmuls.sidehub.adapter.out.postgre.mapper;
 import com.goinmuls.sidehub.adapter.in.rest.dto.response.FindNotificationRecipientResponseDto;
 import com.goinmuls.sidehub.domain.NotificationRecipient;
 import org.springframework.stereotype.Component;
-import org.springframework.util.ObjectUtils;
 
 @Component
 public class NotificationRecipientMapper {
@@ -14,7 +13,7 @@ public class NotificationRecipientMapper {
      * @return 조회 응답 dto
      */
     public FindNotificationRecipientResponseDto toFindResponseDto(NotificationRecipient notificationRecipient) {
-        if (ObjectUtils.isEmpty(notificationRecipient)) {
+        if (notificationRecipient == null) {
             return null;
         }
 

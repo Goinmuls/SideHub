@@ -3,7 +3,6 @@ package com.goinmuls.sidehub.adapter.out.postgre.mapper;
 import com.goinmuls.sidehub.adapter.in.rest.dto.response.FindChatRoomMemberResponseDto;
 import com.goinmuls.sidehub.domain.ChatRoomMember;
 import org.springframework.stereotype.Component;
-import org.springframework.util.ObjectUtils;
 
 @Component
 public class ChatRoomMemberMapper {
@@ -14,7 +13,7 @@ public class ChatRoomMemberMapper {
      * @return 조회 응답 dto
      */
     public FindChatRoomMemberResponseDto toFindResponseDto(ChatRoomMember chatRoomMember) {
-        if (ObjectUtils.isEmpty(chatRoomMember)) {
+        if (chatRoomMember == null) {
             return null;
         }
 

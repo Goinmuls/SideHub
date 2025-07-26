@@ -1,10 +1,8 @@
 package com.goinmuls.sidehub.domain.factory;
 
-import com.goinmuls.sidehub.adapter.in.rest.dto.response.FindNotificationRecipientResponseDto;
 import com.goinmuls.sidehub.adapter.out.postgre.entity.NotificationRecipientEntity;
 import com.goinmuls.sidehub.domain.NotificationRecipient;
 import org.springframework.stereotype.Component;
-import org.springframework.util.ObjectUtils;
 
 @Component
 public class NotificationRecipientFactory {
@@ -15,7 +13,7 @@ public class NotificationRecipientFactory {
      * @return 도메인
      */
     public NotificationRecipient fromEntity(NotificationRecipientEntity notificationRecipientEntity) {
-        if (ObjectUtils.isEmpty(notificationRecipientEntity)) {
+        if (notificationRecipientEntity == null) {
             return null;
         }
 

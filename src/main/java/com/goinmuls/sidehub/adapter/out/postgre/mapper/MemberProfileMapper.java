@@ -3,7 +3,6 @@ package com.goinmuls.sidehub.adapter.out.postgre.mapper;
 import com.goinmuls.sidehub.adapter.in.rest.dto.response.FindMemberProfileResponseDto;
 import com.goinmuls.sidehub.domain.MemberProfile;
 import org.springframework.stereotype.Component;
-import org.springframework.util.ObjectUtils;
 
 @Component
 public class MemberProfileMapper {
@@ -14,7 +13,7 @@ public class MemberProfileMapper {
      * @return 조회 응답 dto
      */
     public FindMemberProfileResponseDto toFindResponseDto(MemberProfile memberProfile) {
-        if (ObjectUtils.isEmpty(memberProfile)) {
+        if (memberProfile == null) {
             return null;
         }
 

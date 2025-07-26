@@ -8,7 +8,6 @@ import com.goinmuls.sidehub.domain.NotificationRecipient;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-import org.springframework.util.ObjectUtils;
 
 import java.util.NoSuchElementException;
 
@@ -28,7 +27,7 @@ public class NotificationRecipientApplicationService implements FindNotification
     public FindNotificationRecipientResponseDto findByNotificationId(Long notificationId) {
         NotificationRecipient notificationRecipient = notificationRecipientOutPort.findByNotificationId(notificationId);
 
-        if (ObjectUtils.isEmpty(notificationRecipient)) {
+        if (notificationRecipient == null) {
             throw new NoSuchElementException("알림 대상자를 찾을 수 없습니다.");
         }
 

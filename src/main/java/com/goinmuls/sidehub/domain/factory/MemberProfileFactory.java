@@ -1,10 +1,8 @@
 package com.goinmuls.sidehub.domain.factory;
 
-import com.goinmuls.sidehub.adapter.in.rest.dto.response.FindMemberProfileResponseDto;
 import com.goinmuls.sidehub.adapter.out.postgre.entity.MemberProfileEntity;
 import com.goinmuls.sidehub.domain.MemberProfile;
 import org.springframework.stereotype.Component;
-import org.springframework.util.ObjectUtils;
 
 @Component
 public class MemberProfileFactory {
@@ -15,7 +13,7 @@ public class MemberProfileFactory {
      * @return 도메인
      */
     public MemberProfile fromEntity(MemberProfileEntity memberEntity) {
-        if (ObjectUtils.isEmpty(memberEntity)) {
+        if (memberEntity == null) {
             return null;
         }
 
