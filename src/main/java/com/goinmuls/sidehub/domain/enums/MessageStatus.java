@@ -8,7 +8,7 @@ import lombok.NoArgsConstructor;
 @Getter
 @AllArgsConstructor(access = AccessLevel.PRIVATE)
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
-public enum NotificationStatus {
+public enum MessageStatus {
     PENDING("PENDING", "대기"),
     SUCCESS("SUCCESS", "성공"),
     FAIL("FAIL", "실패");
