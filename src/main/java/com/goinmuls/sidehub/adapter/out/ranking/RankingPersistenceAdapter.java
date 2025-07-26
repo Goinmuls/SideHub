@@ -16,6 +16,11 @@ public class RankingPersistenceAdapter implements RankingOutPort {
     private final RankingJpaRepository jpaRepository;
     private final RankingFactory rankingFactory;
 
+    /**
+     * 사용자 금주 랭킹 조회
+     * @param request
+     * @return 해당 사용자의 금주 랭킹 정보
+     */
     @Override
     public Ranking getRanking(GetRankingRequest request) {
         RankingEntity rankingEntity = jpaRepository.findByMemberIdAndWeekStart(request.getMemberId(), request.getStartOfWeek())

@@ -18,6 +18,11 @@ public class RankHistoryPersistenceAdapter implements RankingHistoryOutPort {
     private final RankHistoryJpaRepository jpaRepository;
     private final RankHistoryFactory rankHistoryFactory;
 
+    /**
+     * 사용자 랭킹 추이 히스토리 목록 조회
+     * @param memberId
+     * @return 해당 사용자의 랭킹 추이 히스토리 목록
+     */
     @Override
     public List<RankHistory> getRankHistories(Long memberId) {
         return jpaRepository.findAllByMemberId(memberId).stream()

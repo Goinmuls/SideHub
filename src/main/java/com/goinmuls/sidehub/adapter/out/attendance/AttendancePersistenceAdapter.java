@@ -15,7 +15,7 @@ public class AttendancePersistenceAdapter implements AttendanceOutPort {
     private final AttendanceFactory attendanceFactory;
 
     /**
-     * 출석 체크 out port 구현체
+     * 출석 체크
      * @param memberId
      */
     @Override

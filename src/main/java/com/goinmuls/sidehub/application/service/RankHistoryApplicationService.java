@@ -20,6 +20,12 @@ public class RankHistoryApplicationService implements GetRankingHistoryUseCase {
     private final RankingHistoryOutPort rankingHistoryOutPort;
     private final MemberOutPort memberOutPort;
 
+    /**
+     * 사용자 랭킹 추이 히스토리 목록 조회
+     * @param memberId
+     * @return 해당 사용자의 랭킹 추이 히스토리 목록
+     */
+    @Override
     public List<RankHistory> getRankHistories(Long memberId) {
 
         Optional.ofNullable(memberOutPort.findMember(memberId))

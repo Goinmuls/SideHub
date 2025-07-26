@@ -20,6 +20,11 @@ public class RankingApplicationService implements GetRankingUseCase {
     private final RankingOutPort rankingOutPort;
     private final MemberOutPort memberOutPort;
 
+    /**
+     * 사용자 금주 랭킹 조회
+     * @param request
+     * @return 해당 사용자의 금주 랭킹 정보
+     */
     @Override
     public Ranking getRanking(GetRankingRequest request) {
 

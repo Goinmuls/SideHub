@@ -16,6 +16,11 @@ public class StatisticPersistenceAdapter implements StatisticOutPort {
     private final StatisticJpaRepository jpaRepository;
     private final StatisticFactory statisticFactory;
 
+    /**
+     * 사용자 금주 통계 조회
+     * @param request
+     * @return 해당 사용자의 금주 통계 정보
+     */
     @Override
     public Statistic getStatistic(GetStatisticRequest request) {
         StatisticEntity statisticEntity = jpaRepository.findByMemberIdAndWeekStart(request.getMemberId(), request.getStartOfWeek())

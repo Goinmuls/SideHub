@@ -20,7 +20,11 @@ public class AttendanceApplicationService implements CreateAttendanceUseCase {
 
     private final AttendanceOutPort attendanceOutPort;
     private final MemberOutPort memberOutPort;
-    
+
+    /**
+     * 출석 체크
+     * @param memberId
+     */
     @Override
     public void checkAttendance(Long memberId) {
 

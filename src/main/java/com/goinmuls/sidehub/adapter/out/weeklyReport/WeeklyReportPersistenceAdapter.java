@@ -15,6 +15,10 @@ public class WeeklyReportPersistenceAdapter implements WeeklyReportOutPort {
     private final WeeklyReportJpaRepository jpaRepository;
     private final WeeklyReportFactory weeklyReportFactory;
 
+    /**
+     * 주간 리포트 발송 내역 데이터 생성
+     * @param request
+     */
     @Override
     public void createWeeklyReport(CreateWeeklyReportRequest request) {
         WeeklyReportEntity entity = weeklyReportFactory.from(request);
