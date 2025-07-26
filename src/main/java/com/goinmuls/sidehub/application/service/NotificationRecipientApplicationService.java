@@ -1,11 +1,37 @@
 package com.goinmuls.sidehub.application.service;
 
+import com.goinmuls.sidehub.adapter.in.rest.dto.response.FindNotificationRecipientResponseDto;
+import com.goinmuls.sidehub.application.port.in.FindNotificationRecipientUseCase;
+import com.goinmuls.sidehub.application.port.out.NotificationRecipientOutPort;
+import com.goinmuls.sidehub.domain.NotificationRecipient;
+import com.goinmuls.sidehub.domain.factory.NotificationRecipientFactory;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+import org.springframework.util.ObjectUtils;
+
+import java.util.NoSuchElementException;
 
 @Service
 @RequiredArgsConstructor
 @Transactional(readOnly = true)
-public class NotificationRecipientApplicationService {
+public class NotificationRecipientApplicationService implements FindNotificationRecipientUseCase {
+    private final NotificationRecipientOutPort notificationRecipientOutPort;
+    private final NotificationRecipientFactory notificationRecipientFactory;
+
+    /**
+     * 알림 대상자 조회
+     * @param notificationId 알림 아이디
+     * @return 알림 대상
+     */
+    @Override
+    public FindNotificationRecipientResponseDto findByNotificationId(Long notificationId) {
+        NotificationRecipient notificationRecipient = notificationRecipientOutPort.findByNotificationId(notificationId);
+
+        if (ObjectUtils.isEmpty(notificationRecipient)) {
+            throw new NoSuchElementException("알림 대상자를 찾을 수 없습니다.");
+        }
+
+        return notificationRecipientFactory.toFindResponseDto(notificationRecipient);
+    }
 }
