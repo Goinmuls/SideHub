@@ -2,11 +2,15 @@ package com.goinmuls.sidehub.application.service;
 
 import com.goinmuls.sidehub.adapter.in.dto.GetStatisticRequest;
 import com.goinmuls.sidehub.application.port.in.GetStatisticUseCase;
+import com.goinmuls.sidehub.application.port.out.MemberOutPort;
 import com.goinmuls.sidehub.application.port.out.StatisticOutPort;
 import com.goinmuls.sidehub.domain.Statistic;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+
+import java.util.NoSuchElementException;
+import java.util.Optional;
 
 @Service
 @Transactional
@@ -14,10 +18,14 @@ import org.springframework.transaction.annotation.Transactional;
 public class StatisticApplicationService implements GetStatisticUseCase {
 
     private final StatisticOutPort statisticOutPort;
+    private final MemberOutPort memberOutPort;
 
     @Override
     public Statistic getStatistic(GetStatisticRequest request) {
-        // todo: memberId의 member가 존재하는지 확인
+
+        Optional.ofNullable(memberOutPort.findMember(request.getMemberId()))
+                .orElseThrow(() -> new NoSuchElementException("사용자를 찾을 수 없습니다."));
+
         return statisticOutPort.getStatistic(request);
     }
 }
