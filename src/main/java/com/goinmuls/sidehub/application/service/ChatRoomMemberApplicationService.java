@@ -1,10 +1,10 @@
 package com.goinmuls.sidehub.application.service;
 
 import com.goinmuls.sidehub.adapter.in.rest.dto.response.FindChatRoomMemberResponseDto;
+import com.goinmuls.sidehub.adapter.out.postgre.mapper.ChatRoomMemberMapper;
 import com.goinmuls.sidehub.application.port.in.FindChatRoomMemberUseCase;
 import com.goinmuls.sidehub.application.port.out.ChatRoomMemberOutPort;
 import com.goinmuls.sidehub.domain.ChatRoomMember;
-import com.goinmuls.sidehub.domain.factory.ChatRoomMemberFactory;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -17,7 +17,7 @@ import java.util.NoSuchElementException;
 @Transactional(readOnly = true)
 public class ChatRoomMemberApplicationService implements FindChatRoomMemberUseCase {
     private final ChatRoomMemberOutPort chatRoomMemberOutport;
-    private final ChatRoomMemberFactory chatRoomMemberFactory;
+    private final ChatRoomMemberMapper chatRoomMemberMapper;
 
     /**
      * 채팅방 멤버 조회
@@ -33,7 +33,7 @@ public class ChatRoomMemberApplicationService implements FindChatRoomMemberUseCa
         }
 
         return chatRoomMembers.stream()
-                .map(chatRoomMemberFactory::toFindResponseDto)
+                .map(chatRoomMemberMapper::toFindResponseDto)
                 .toList();
     }
 }

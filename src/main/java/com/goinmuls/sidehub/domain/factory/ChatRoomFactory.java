@@ -23,20 +23,4 @@ public class ChatRoomFactory {
                 chatRoomEntity.isDeleted(), chatRoomEntity.getCreatedAt(), chatRoomEntity.getUpdatedAt()
         );
     }
-
-    /**
-     * 도메인 -> 조회 응답 dto
-     * @param chatRoom 도메인
-     * @return 조회 응답 dto
-     */
-    public FindChatRoomResponseDto toFindResponseDto(ChatRoom chatRoom) {
-        if (ObjectUtils.isEmpty(chatRoom)) {
-            return null;
-        }
-
-        return FindChatRoomResponseDto.of(
-                chatRoom.getChatRoomId(), chatRoom.getType(), chatRoom.getName(),
-                chatRoom.isDeleted(), chatRoom.getCreatedAt(), chatRoom.getUpdatedAt()
-        );
-    }
 }

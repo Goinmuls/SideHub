@@ -4,7 +4,7 @@ import com.goinmuls.sidehub.adapter.out.postgre.entity.ChatOutboxEntity;
 import com.goinmuls.sidehub.adapter.out.postgre.repository.ChatOutboxJpaRepository;
 import com.goinmuls.sidehub.application.port.out.ChatOutboxOutPort;
 import com.goinmuls.sidehub.domain.ChatOutbox;
-import com.goinmuls.sidehub.domain.factory.ChatOutboxFactory;
+import com.goinmuls.sidehub.adapter.out.postgre.mapper.ChatOutboxMapper;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
 
@@ -12,7 +12,7 @@ import org.springframework.stereotype.Component;
 @RequiredArgsConstructor
 public class ChatOutboxPersistenceAdapter implements ChatOutboxOutPort {
     private ChatOutboxJpaRepository chatOutboxJpaRepository;
-    private ChatOutboxFactory chatOutboxFactory;
+    private ChatOutboxMapper chatOutboxMapper;
 
     /**
      * 채팅 아웃박스 저장
@@ -20,7 +20,7 @@ public class ChatOutboxPersistenceAdapter implements ChatOutboxOutPort {
      */
     @Override
     public void save(ChatOutbox chatOutbox) {
-        ChatOutboxEntity chatOutboxEntity = chatOutboxFactory.toEntity(chatOutbox);
+        ChatOutboxEntity chatOutboxEntity = chatOutboxMapper.toEntity(chatOutbox);
         chatOutboxJpaRepository.save(chatOutboxEntity);
     }
 }

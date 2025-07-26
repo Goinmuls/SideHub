@@ -1,10 +1,10 @@
 package com.goinmuls.sidehub.application.service;
 
 import com.goinmuls.sidehub.adapter.in.rest.dto.response.FindChatRoomMessageFileResponseDto;
+import com.goinmuls.sidehub.adapter.out.postgre.mapper.ChatRoomMessageFileMapper;
 import com.goinmuls.sidehub.application.port.in.FindChatRoomMessageFileUseCase;
 import com.goinmuls.sidehub.application.port.out.ChatRoomMessageFileOutPort;
 import com.goinmuls.sidehub.domain.ChatRoomMessageFile;
-import com.goinmuls.sidehub.domain.factory.ChatRoomMessageFileFactory;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -18,7 +18,7 @@ import java.util.NoSuchElementException;
 @Transactional(readOnly = true)
 public class ChatRoomMessageFileApplicationService implements FindChatRoomMessageFileUseCase {
     private final ChatRoomMessageFileOutPort chatRoomMessageFileOutport;
-    private final ChatRoomMessageFileFactory chatRoomMessageFileFactory;
+    private final ChatRoomMessageFileMapper chatRoomMessageFileMapper;
 
     /**
      * 채팅방 첨부파일 조회
@@ -34,7 +34,7 @@ public class ChatRoomMessageFileApplicationService implements FindChatRoomMessag
         }
 
         return chatRoomMessageFiles.stream()
-                .map(chatRoomMessageFileFactory::toFindResponseDto)
+                .map(chatRoomMessageFileMapper::toFindResponseDto)
                 .toList();
     }
 }

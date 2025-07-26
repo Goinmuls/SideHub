@@ -32,28 +32,4 @@ public class FileMetaFactory {
           fileMetaEntity.getDeletedAt()
         );
     }
-
-    /**
-     * 도메인 -> 조회 응답 dto 변환
-     * @param fileMeta 도메인
-     * @return 조회 응답 dto
-     */
-    public FindFileMetaResponseDto toFindResponseDto(FileMeta fileMeta) {
-        if (ObjectUtils.isEmpty(fileMeta)) {
-            return null;
-        }
-
-        return FindFileMetaResponseDto.of(
-                fileMeta.getFileMetaId(),
-                fileMeta.getMemberId(),
-                fileMeta.getFilePath(),
-                fileMeta.getOriginalSize(),
-                fileMeta.isCompressed(),
-                fileMeta.getCompressedSize(),
-                fileMeta.getMimeType(),
-                fileMeta.getSize(),
-                fileMeta.getCreatedAt(),
-                fileMeta.getDeletedAt()
-        );
-    }
 }

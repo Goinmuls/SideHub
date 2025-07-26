@@ -4,7 +4,7 @@ import com.goinmuls.sidehub.adapter.out.postgre.entity.ChatInboxEntity;
 import com.goinmuls.sidehub.adapter.out.postgre.repository.ChatInboxJpaRepository;
 import com.goinmuls.sidehub.application.port.out.ChatInboxOutPort;
 import com.goinmuls.sidehub.domain.ChatInbox;
-import com.goinmuls.sidehub.domain.factory.ChatInboxFactory;
+import com.goinmuls.sidehub.adapter.out.postgre.mapper.ChatInboxMapper;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
 
@@ -12,7 +12,7 @@ import org.springframework.stereotype.Component;
 @RequiredArgsConstructor
 public class ChatInboxPersistenceAdapter implements ChatInboxOutPort {
     private ChatInboxJpaRepository chatInboxJpaRepository;
-    private ChatInboxFactory chatInboxFactory;
+    private ChatInboxMapper chatInboxMapper;
 
 
     /**
@@ -21,7 +21,7 @@ public class ChatInboxPersistenceAdapter implements ChatInboxOutPort {
      */
     @Override
     public void save(ChatInbox chatInbox) {
-        ChatInboxEntity chatInboxEntity = chatInboxFactory.toEntity(chatInbox);
+        ChatInboxEntity chatInboxEntity = chatInboxMapper.toEntity(chatInbox);
         chatInboxJpaRepository.save(chatInboxEntity);
     }
 }

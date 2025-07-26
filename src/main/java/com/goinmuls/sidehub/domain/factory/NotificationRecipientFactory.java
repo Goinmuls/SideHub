@@ -27,23 +27,4 @@ public class NotificationRecipientFactory {
                 notificationRecipientEntity.getReadAt()
         );
     }
-
-    /**
-     * 도메인 -> 조회 응답 dto 변환
-     * @param notificationRecipient 도메인
-     * @return 조회 응답 dto
-     */
-    public FindNotificationRecipientResponseDto toFindResponseDto(NotificationRecipient notificationRecipient) {
-        if (ObjectUtils.isEmpty(notificationRecipient)) {
-            return null;
-        }
-
-        return FindNotificationRecipientResponseDto.of(
-                notificationRecipient.getNotificationRecipientId(),
-                notificationRecipient.getNotificationId(),
-                notificationRecipient.getNotificationTargetId(),
-                notificationRecipient.isRead(),
-                notificationRecipient.getReadAt()
-        );
-    }
 }

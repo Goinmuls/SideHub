@@ -30,26 +30,4 @@ public class MemberProfileFactory {
                 memberEntity.getDeletedAt()
         );
     }
-
-    /**
-     * 도메인 -> 조회 응답 dto 변환
-     * @param memberProfile 도메인
-     * @return 조회 응답 dto
-     */
-    public FindMemberProfileResponseDto toFindResponseDto(MemberProfile memberProfile) {
-        if (ObjectUtils.isEmpty(memberProfile)) {
-            return null;
-        }
-
-        return FindMemberProfileResponseDto.of(
-                memberProfile.getMemberProfileId(),
-                memberProfile.getFileMetaId(),
-                memberProfile.getMemberId(),
-                memberProfile.getMemberProfileType(),
-                memberProfile.isDeleted(),
-                memberProfile.getCreatedAt(),
-                memberProfile.getUpdatedAt(),
-                memberProfile.getDeletedAt()
-        );
-    }
 }

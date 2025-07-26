@@ -1,10 +1,10 @@
 package com.goinmuls.sidehub.application.service;
 
 import com.goinmuls.sidehub.adapter.in.rest.dto.response.FindMemberProfileResponseDto;
+import com.goinmuls.sidehub.adapter.out.postgre.mapper.MemberProfileMapper;
 import com.goinmuls.sidehub.application.port.in.FindMemberProfileUseCase;
 import com.goinmuls.sidehub.application.port.out.MemberProfileOutPort;
 import com.goinmuls.sidehub.domain.MemberProfile;
-import com.goinmuls.sidehub.domain.factory.MemberProfileFactory;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -17,7 +17,7 @@ import java.util.NoSuchElementException;
 @Transactional(readOnly = true)
 public class MemberProfileApplicationService implements FindMemberProfileUseCase {
     private final MemberProfileOutPort memberProfileOutPort;
-    private final MemberProfileFactory memberProfileFactory;
+    private final MemberProfileMapper memberProfileMapper;
 
     /**
      * 멤버 프로필 조회
@@ -31,6 +31,6 @@ public class MemberProfileApplicationService implements FindMemberProfileUseCase
         if (ObjectUtils.isEmpty(memberProfile)) {
             throw new NoSuchElementException("멤버 프로필을 찾을 수 없습니다.");
         }
-        return memberProfileFactory.toFindResponseDto(memberProfile);
+        return memberProfileMapper.toFindResponseDto(memberProfile);
     }
 }

@@ -1,4 +1,4 @@
-package com.goinmuls.sidehub.domain.factory;
+package com.goinmuls.sidehub.adapter.out.postgre.mapper;
 
 import com.goinmuls.sidehub.adapter.out.postgre.entity.ChatOutboxEntity;
 import com.goinmuls.sidehub.domain.ChatOutbox;
@@ -6,7 +6,7 @@ import org.springframework.stereotype.Component;
 import org.springframework.util.ObjectUtils;
 
 @Component
-public class ChatOutboxFactory {
+public class ChatOutboxMapper {
 
     /**
      * 도메인 -> 엔티티 변환
