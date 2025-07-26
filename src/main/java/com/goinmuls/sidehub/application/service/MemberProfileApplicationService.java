@@ -24,7 +24,7 @@ public class MemberProfileApplicationService implements FindMemberProfileUseCase
      * @return 멤버 프로필
      */
     @Override
-    public FindMemberProfileResponseDto findByMemberId(Long memberId) {
+    public FindMemberProfileResponseDto getMemberProfile(Long memberId) {
         MemberProfile memberProfile = memberProfileOutPort.findByMemberId(memberId);
 
         if (memberProfile == null) {

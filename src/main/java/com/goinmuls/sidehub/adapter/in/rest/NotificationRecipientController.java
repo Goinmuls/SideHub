@@ -8,6 +8,8 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.util.List;
+
 @RestController
 @RequiredArgsConstructor
 @RequestMapping("/api/v1/notification-recipient")
@@ -20,7 +22,7 @@ public class NotificationRecipientController {
      * @return 알림 대상
      */
     @GetMapping("/by-notification/{notificationId}")
-    public FindNotificationRecipientResponseDto findByNotificationId(@PathVariable Long notificationId) {
-        return findNotificationRecipientUseCase.findByNotificationId(notificationId);
+    public List<FindNotificationRecipientResponseDto> getRecipientsOfNotification(@PathVariable Long notificationId) {
+        return findNotificationRecipientUseCase.getRecipientsOfNotification(notificationId);
     }
 }

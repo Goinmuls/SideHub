@@ -20,7 +20,7 @@ public class MemberProfileController {
      * @return 멤버 프로필
      */
     @GetMapping("/by-member/{memberId}")
-    public FindMemberProfileResponseDto findByMemberId(@PathVariable Long memberId) {
-        return findMemberProfileUseCase.findByMemberId(memberId);
+    public FindMemberProfileResponseDto getMemberProfile(@PathVariable Long memberId) {
+        return findMemberProfileUseCase.getMemberProfile(memberId);
     }
 }

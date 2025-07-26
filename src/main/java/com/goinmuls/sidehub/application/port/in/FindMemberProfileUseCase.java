@@ -3,5 +3,5 @@ package com.goinmuls.sidehub.application.port.in;
 import com.goinmuls.sidehub.adapter.in.rest.dto.response.FindMemberProfileResponseDto;
 
 public interface FindMemberProfileUseCase {
-    FindMemberProfileResponseDto findByMemberId(Long memberId);
+    FindMemberProfileResponseDto getMemberProfile(Long memberId);
 }

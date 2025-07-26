@@ -24,7 +24,7 @@ public class NotificationApplicationService implements FindNotificationUseCase {
      * @return 알림
      */
     @Override
-    public FindNotificationResponseDto findById(Long id) {
+    public FindNotificationResponseDto getNotification(Long id) {
         Notification notification = notificationOutPort.findById(id);
 
         if (notification == null) {

@@ -5,10 +5,12 @@ import com.goinmuls.sidehub.adapter.out.postgre.mapper.NotificationRecipientMapp
 import com.goinmuls.sidehub.application.port.in.FindNotificationRecipientUseCase;
 import com.goinmuls.sidehub.application.port.out.NotificationRecipientOutPort;
 import com.goinmuls.sidehub.domain.NotificationRecipient;
+import com.goinmuls.sidehub.infrastructure.util.CollectionUtils;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.List;
 import java.util.NoSuchElementException;
 
 @Service
@@ -24,13 +26,15 @@ public class NotificationRecipientApplicationService implements FindNotification
      * @return 알림 대상
      */
     @Override
-    public FindNotificationRecipientResponseDto findByNotificationId(Long notificationId) {
-        NotificationRecipient notificationRecipient = notificationRecipientOutPort.findByNotificationId(notificationId);
+    public List<FindNotificationRecipientResponseDto> getRecipientsOfNotification(Long notificationId) {
+        List<NotificationRecipient> notificationRecipients = notificationRecipientOutPort.findAllByNotificationId(notificationId);
 
-        if (notificationRecipient == null) {
+        if (CollectionUtils.isNullOrEmpty(notificationRecipients)) {
             throw new NoSuchElementException("알림 대상자를 찾을 수 없습니다.");
         }
 
-        return notificationRecipientMapper.toFindResponseDto(notificationRecipient);
+        return notificationRecipients.stream()
+                .map(notificationRecipientMapper::toFindResponseDto)
+                .toList();
     }
 }

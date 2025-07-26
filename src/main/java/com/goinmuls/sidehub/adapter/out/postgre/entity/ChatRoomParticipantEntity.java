@@ -13,15 +13,15 @@ import java.util.Objects;
 
 @Entity
 @Getter
-@Table(name = "chat_room_member")
+@Table(name = "chat_room_]articipant")
 @AllArgsConstructor(access = AccessLevel.PRIVATE)
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
-public class ChatRoomMemberEntity {
+public class ChatRoomParticipantEntity {
     @Id
     @Comment("채팅방 멤버 Id")
-    @Column(name = "chat_room_member_id")
+    @Column(name = "chat_room_participant_id")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long chatRoomMemberId;
+    private Long chatRoomParticipantId;
 
     @Comment("채팅방 정보 id")
     @Column(name = "chat_room_id")
@@ -67,12 +67,12 @@ public class ChatRoomMemberEntity {
     @Override
     public boolean equals(Object o) {
 
-        if (!(o instanceof ChatRoomMemberEntity that)) return false;
-        return isKicked == that.isKicked && isExited == that.isExited && Objects.equals(chatRoomMemberId, that.chatRoomMemberId) && Objects.equals(chatRoomId, that.chatRoomId) && Objects.equals(memberId, that.memberId) && role == that.role && Objects.equals(kickerId, that.kickerId) && Objects.equals(kickedAt, that.kickedAt) && Objects.equals(exitedAt, that.exitedAt) && Objects.equals(createdAt, that.createdAt) && Objects.equals(updatedAt, that.updatedAt);
+        if (!(o instanceof ChatRoomParticipantEntity that)) return false;
+        return isKicked == that.isKicked && isExited == that.isExited && Objects.equals(chatRoomParticipantId, that.chatRoomParticipantId) && Objects.equals(chatRoomId, that.chatRoomId) && Objects.equals(memberId, that.memberId) && role == that.role && Objects.equals(kickerId, that.kickerId) && Objects.equals(kickedAt, that.kickedAt) && Objects.equals(exitedAt, that.exitedAt) && Objects.equals(createdAt, that.createdAt) && Objects.equals(updatedAt, that.updatedAt);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(chatRoomMemberId, chatRoomId, memberId, role, kickerId, isKicked, isExited, kickedAt, exitedAt, createdAt, updatedAt);
+        return Objects.hash(chatRoomParticipantId, chatRoomId, memberId, role, kickerId, isKicked, isExited, kickedAt, exitedAt, createdAt, updatedAt);
     }
 }

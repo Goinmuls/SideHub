@@ -24,7 +24,7 @@ public class FileMetaApplicationService implements FindFileMetaUseCase {
      * @return 파일 메타
      */
     @Override
-    public FindFileMetaResponseDto findById(Long id) {
+    public FindFileMetaResponseDto getFileMeta(Long id) {
         FileMeta fileMeta = fileMetaOutPort.findById(id);
 
         if (fileMeta == null) {

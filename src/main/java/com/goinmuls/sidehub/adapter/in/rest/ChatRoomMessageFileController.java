@@ -22,7 +22,7 @@ public class ChatRoomMessageFileController {
      * @return 채팅방 첨부파일 리스트
      */
     @GetMapping("/by-chat-room/{chatRoomId}")
-    public List<FindChatRoomMessageFileResponseDto> findAllByChatRoomId(@PathVariable Long chatRoomId) {
-        return findChatRoomMessageFileUseCase.findAllByChatRoomId(chatRoomId);
+    public List<FindChatRoomMessageFileResponseDto> getFilesInChatRoom(@PathVariable Long chatRoomId) {
+        return findChatRoomMessageFileUseCase.getFilesInChatRoom(chatRoomId);
     }
 }

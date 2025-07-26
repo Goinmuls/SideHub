@@ -24,7 +24,7 @@ public class ChatRoomApplicationService implements FindChatRoomUseCase {
      * @return 채팅방
      */
     @Override
-    public FindChatRoomResponseDto findById(Long id) {
+    public FindChatRoomResponseDto getChatRoom(Long id) {
         ChatRoom chatRoom = chatRoomOutport.findById(id);
 
         if (chatRoom == null) {

@@ -5,6 +5,5 @@ import com.goinmuls.sidehub.adapter.in.rest.dto.response.FindChatRoomMessageFile
 import java.util.List;
 
 public interface FindChatRoomMessageFileUseCase {
-
-    List<FindChatRoomMessageFileResponseDto> findAllByChatRoomId(Long chatRoomId);
+    List<FindChatRoomMessageFileResponseDto> getFilesInChatRoom(Long chatRoomId);
 }

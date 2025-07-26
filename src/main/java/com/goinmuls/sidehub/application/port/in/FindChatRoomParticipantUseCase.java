@@ -4,6 +4,6 @@ import com.goinmuls.sidehub.adapter.in.rest.dto.response.FindChatRoomMemberRespo
 
 import java.util.List;
 
-public interface FindChatRoomMemberUseCase {
-    List<FindChatRoomMemberResponseDto> findAllByChatRoomId(Long chatRoomId);
+public interface FindChatRoomParticipantUseCase {
+    List<FindChatRoomMemberResponseDto> getParticipantsInChatRoom(Long chatRoomId);
 }

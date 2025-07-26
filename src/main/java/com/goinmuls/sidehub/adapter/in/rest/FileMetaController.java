@@ -20,7 +20,7 @@ public class FileMetaController {
      * @return 파일 메타
      */
     @GetMapping("/{id}")
-    public FindFileMetaResponseDto findById(@PathVariable Long id) {
-        return findFileMetaUseCase.findById(id);
+    public FindFileMetaResponseDto getFileMeta(@PathVariable Long id) {
+        return findFileMetaUseCase.getFileMeta(id);
     }
 }

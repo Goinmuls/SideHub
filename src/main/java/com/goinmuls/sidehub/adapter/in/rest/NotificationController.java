@@ -20,7 +20,7 @@ public class NotificationController {
      * @return 알림
      */
     @GetMapping("/{id}")
-    public FindNotificationResponseDto findById(@PathVariable Long id) {
-        return findNotificationUseCase.findById(id);
+    public FindNotificationResponseDto getNotification(@PathVariable Long id) {
+        return findNotificationUseCase.getNotification(id);
     }
 }

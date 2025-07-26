@@ -25,7 +25,7 @@ public class ChatRoomMessageFileApplicationService implements FindChatRoomMessag
      * @return 채팅방 첨부파일
      */
     @Override
-    public List<FindChatRoomMessageFileResponseDto> findAllByChatRoomId(Long chatRoomId) {
+    public List<FindChatRoomMessageFileResponseDto> getFilesInChatRoom(Long chatRoomId) {
         List<ChatRoomMessageFile> chatRoomMessageFiles = chatRoomMessageFileOutport.findAllByChatRoomId(chatRoomId);
 
         if (chatRoomMessageFiles == null) {

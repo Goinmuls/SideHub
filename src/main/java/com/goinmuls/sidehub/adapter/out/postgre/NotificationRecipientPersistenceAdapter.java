@@ -8,6 +8,8 @@ import com.goinmuls.sidehub.domain.factory.NotificationRecipientFactory;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
 
+import java.util.List;
+
 @Component
 @RequiredArgsConstructor
 public class NotificationRecipientPersistenceAdapter implements NotificationRecipientOutPort {
@@ -15,13 +17,15 @@ public class NotificationRecipientPersistenceAdapter implements NotificationReci
     private final NotificationRecipientFactory notificationRecipientFactory;
 
     /**
-     * 알림 대상자 조회
+     * 알림 대상자들 조회
      * @param notificationId 알림 아이디
      * @return 알림 대상
      */
     @Override
-    public NotificationRecipient findByNotificationId(Long notificationId) {
-        NotificationRecipientEntity notificationRecipientEntity = notificationRecipientJpaRepository.findByNotificationId(notificationId).orElse(null);
-        return notificationRecipientFactory.fromEntity(notificationRecipientEntity);
+    public List<NotificationRecipient> findAllByNotificationId(Long notificationId) {
+        List<NotificationRecipientEntity> notificationRecipientEntity = notificationRecipientJpaRepository.findAllByNotificationId(notificationId);
+        return notificationRecipientEntity.stream()
+                .map(notificationRecipientFactory::fromEntity)
+                .toList();
     }
 }

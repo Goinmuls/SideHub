@@ -20,7 +20,7 @@ public class ChatRoomController {
      * @return 채팅방
      */
     @GetMapping("/{id}")
-    public FindChatRoomResponseDto findById(@PathVariable Long id) {
-        return findChatRoomUseCase.findById(id);
+    public FindChatRoomResponseDto getChatRoom(@PathVariable Long id) {
+        return findChatRoomUseCase.getChatRoom(id);
     }
 }
