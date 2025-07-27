@@ -12,8 +12,4 @@ public class AttendanceFactory {
 
         return Attendance.of(entity.getId());
     }
-
-    public AttendanceEntity from (Long memberId) {
-        return AttendanceEntity.of(memberId);
-    };
 }
