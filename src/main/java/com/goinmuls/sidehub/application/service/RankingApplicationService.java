@@ -1,6 +1,8 @@
 package com.goinmuls.sidehub.application.service;
 
 import com.goinmuls.sidehub.adapter.in.dto.request.GetRankingRequest;
+import com.goinmuls.sidehub.adapter.in.dto.response.GetRankingResponse;
+import com.goinmuls.sidehub.application.mapper.RankingMapper;
 import com.goinmuls.sidehub.application.port.in.GetRankingUseCase;
 import com.goinmuls.sidehub.application.port.out.MemberOutPort;
 import com.goinmuls.sidehub.application.port.out.RankingOutPort;
@@ -18,6 +20,7 @@ import java.util.NoSuchElementException;
 public class RankingApplicationService implements GetRankingUseCase {
 
     private final RankingOutPort rankingOutPort;
+    private final RankingMapper rankingMapper;
     private final MemberOutPort memberOutPort;
 
     /**
@@ -26,13 +29,14 @@ public class RankingApplicationService implements GetRankingUseCase {
      * @return 해당 사용자의 금주 랭킹 정보
      */
     @Override
-    public Ranking getRanking(GetRankingRequest request) {
+    public GetRankingResponse getRanking(GetRankingRequest request) {
 
         Member member = memberOutPort.findMember(request.getMemberId());
         if(member == null) {
             throw  new NoSuchElementException("사용자를 찾을 수 없습니다.");
         }
 
-        return rankingOutPort.getRanking(request.getMemberId(), request.getStartOfWeek());
+        Ranking ranking = rankingOutPort.getRanking(request.getMemberId(), request.getStartOfWeek());
+        return rankingMapper.toResponse(ranking);
     }
 }

@@ -1,6 +1,7 @@
 package com.goinmuls.sidehub.adapter.in.rest;
 
 import com.goinmuls.sidehub.adapter.in.dto.request.GetRankingRequest;
+import com.goinmuls.sidehub.adapter.in.dto.response.GetRankingResponse;
 import com.goinmuls.sidehub.application.port.in.GetRankingUseCase;
 import com.goinmuls.sidehub.domain.Ranking;
 import lombok.RequiredArgsConstructor;
@@ -18,8 +19,8 @@ public class RankingController {
     private final GetRankingUseCase getRankingUseCase;
 
     @GetMapping
-    public ResponseEntity<Ranking> getRanking(GetRankingRequest request) {
-        Ranking ranking = getRankingUseCase.getRanking(request);
+    public ResponseEntity<GetRankingResponse> getRanking(GetRankingRequest request) {
+        GetRankingResponse ranking = getRankingUseCase.getRanking(request);
         return ResponseEntity.status(HttpStatus.OK).body(ranking);
     }
 }
