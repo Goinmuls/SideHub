@@ -5,16 +5,13 @@ import com.goinmuls.sidehub.adapter.out.weeklyReport.entity.WeeklyReportEntity;
 import com.goinmuls.sidehub.domain.WeeklyReport;
 import org.springframework.stereotype.Component;
 
+import java.time.LocalDate;
+import java.time.LocalDateTime;
+
 @Component
 public class WeeklyReportFactory {
 
-    public WeeklyReportEntity from (CreateWeeklyReportRequest request) {
-        return WeeklyReportEntity.of(
-                request.getMemberId(),
-                request.getStartOfWeek(),
-                request.getSendAt(),
-                request.getStatus(),
-                request.getChannel()
-        );
+    public WeeklyReportEntity from (Long memberId, LocalDate startOfWeek, String channel, String status, LocalDateTime sentAt) {
+        return WeeklyReportEntity.of(memberId, startOfWeek, channel, status, sentAt);
     }
 }

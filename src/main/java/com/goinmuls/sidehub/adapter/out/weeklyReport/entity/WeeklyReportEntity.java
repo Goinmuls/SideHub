@@ -52,7 +52,7 @@ public class WeeklyReportEntity {
     private LocalDateTime createdAt;
 
     // factory method
-    public static WeeklyReportEntity of(Long memberId, LocalDate weekStart, LocalDateTime sentAt, String status, String channel) {
+    public static WeeklyReportEntity of(Long memberId, LocalDate weekStart,  String channel, String status, LocalDateTime sentAt) {
         return WeeklyReportEntity.builder()
                 .id(null)
                 .memberId(memberId)

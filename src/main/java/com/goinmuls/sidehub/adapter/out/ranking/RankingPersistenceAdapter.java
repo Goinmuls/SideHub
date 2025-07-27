@@ -9,6 +9,8 @@ import com.goinmuls.sidehub.domain.factory.RankingFactory;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
 
+import java.time.LocalDate;
+
 @RequiredArgsConstructor
 @Component
 public class RankingPersistenceAdapter implements RankingOutPort {
@@ -18,12 +20,12 @@ public class RankingPersistenceAdapter implements RankingOutPort {
 
     /**
      * 사용자 금주 랭킹 조회
-     * @param request
+     * @param memberId, startOfWeek
      * @return 해당 사용자의 금주 랭킹 정보
      */
     @Override
-    public Ranking getRanking(GetRankingRequest request) {
-        RankingEntity rankingEntity = rankingJpaRepository.findByMemberIdAndWeekStart(request.getMemberId(), request.getStartOfWeek())
+    public Ranking getRanking(Long memberId, LocalDate startOfWeek) {
+        RankingEntity rankingEntity = rankingJpaRepository.findByMemberIdAndWeekStart(memberId, startOfWeek)
                 .orElse(null);
         return rankingFactory.from(rankingEntity);
     }

@@ -34,6 +34,6 @@ public class RankingApplicationService implements GetRankingUseCase {
             throw  new NoSuchElementException("사용자를 찾을 수 없습니다.");
         }
 
-        return rankingOutPort.getRanking(request);
+        return rankingOutPort.getRanking(request.getMemberId(), request.getStartOfWeek());
     }
 }

@@ -32,6 +32,12 @@ public class WeeklyReportApplicationService implements CreateWeeklyReportUseCase
             throw  new NoSuchElementException("사용자를 찾을 수 없습니다.");
         }
 
-        weeklyReportOutPort.createWeeklyReport(request);
+        weeklyReportOutPort.createWeeklyReport(
+                request.getMemberId(),
+                request.getStartOfWeek(),
+                request.getChannel(),
+                request.getStatus(),
+                request.getSendAt()
+        );
     }
 }
