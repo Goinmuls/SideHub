@@ -1,6 +1,5 @@
 package com.goinmuls.sidehub.adapter.out.rankHistory;
 
-import com.goinmuls.sidehub.adapter.out.rankHistory.entity.RankHistoryEntity;
 import com.goinmuls.sidehub.adapter.out.rankHistory.repository.RankHistoryJpaRepository;
 import com.goinmuls.sidehub.application.port.out.RankingHistoryOutPort;
 import com.goinmuls.sidehub.domain.RankHistory;
@@ -15,7 +14,7 @@ import java.util.stream.Collectors;
 @Component
 public class RankHistoryPersistenceAdapter implements RankingHistoryOutPort {
 
-    private final RankHistoryJpaRepository jpaRepository;
+    private final RankHistoryJpaRepository rankHistoryJpaRepository;
     private final RankHistoryFactory rankHistoryFactory;
 
     /**
@@ -25,7 +24,7 @@ public class RankHistoryPersistenceAdapter implements RankingHistoryOutPort {
      */
     @Override
     public List<RankHistory> getRankHistories(Long memberId) {
-        return jpaRepository.findAllByMemberId(memberId).stream()
+        return rankHistoryJpaRepository.findAllByMemberId(memberId).stream()
                 .map(rankHistoryFactory::from)
                 .collect(Collectors.toList());
     }

@@ -13,7 +13,7 @@ import org.springframework.stereotype.Component;
 @Component
 public class RankingPersistenceAdapter implements RankingOutPort {
 
-    private final RankingJpaRepository jpaRepository;
+    private final RankingJpaRepository rankingJpaRepository;
     private final RankingFactory rankingFactory;
 
     /**
@@ -23,7 +23,7 @@ public class RankingPersistenceAdapter implements RankingOutPort {
      */
     @Override
     public Ranking getRanking(GetRankingRequest request) {
-        RankingEntity rankingEntity = jpaRepository.findByMemberIdAndWeekStart(request.getMemberId(), request.getStartOfWeek())
+        RankingEntity rankingEntity = rankingJpaRepository.findByMemberIdAndWeekStart(request.getMemberId(), request.getStartOfWeek())
                 .orElse(null);
         return rankingFactory.from(rankingEntity);
     }

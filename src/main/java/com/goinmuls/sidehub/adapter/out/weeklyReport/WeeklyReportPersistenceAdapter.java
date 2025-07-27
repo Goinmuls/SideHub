@@ -12,7 +12,7 @@ import org.springframework.stereotype.Component;
 @RequiredArgsConstructor
 public class WeeklyReportPersistenceAdapter implements WeeklyReportOutPort {
 
-    private final WeeklyReportJpaRepository jpaRepository;
+    private final WeeklyReportJpaRepository weeklyReportJpaRepository;
     private final WeeklyReportFactory weeklyReportFactory;
 
     /**
@@ -22,6 +22,6 @@ public class WeeklyReportPersistenceAdapter implements WeeklyReportOutPort {
     @Override
     public void createWeeklyReport(CreateWeeklyReportRequest request) {
         WeeklyReportEntity entity = weeklyReportFactory.from(request);
-        jpaRepository.save(entity);
+        weeklyReportJpaRepository.save(entity);
     }
 }

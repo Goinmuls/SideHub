@@ -11,7 +11,7 @@ import org.springframework.stereotype.Component;
 @RequiredArgsConstructor
 public class AttendancePersistenceAdapter implements AttendanceOutPort {
 
-    private final AttendanceJpaRepository jpaRepository;
+    private final AttendanceJpaRepository attendanceJpaRepository;
     private final AttendanceFactory attendanceFactory;
 
     /**
@@ -21,6 +21,6 @@ public class AttendancePersistenceAdapter implements AttendanceOutPort {
     @Override
     public void createAttendance(Long memberId) {
         AttendanceEntity entity = attendanceFactory.from(memberId);
-        jpaRepository.save(entity);
+        attendanceJpaRepository.save(entity);
     }
 }
