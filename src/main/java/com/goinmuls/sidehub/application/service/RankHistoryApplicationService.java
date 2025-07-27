@@ -1,6 +1,8 @@
 package com.goinmuls.sidehub.application.service;
 
-import com.goinmuls.sidehub.application.port.in.GetRankingHistoryUseCase;
+import com.goinmuls.sidehub.adapter.in.dto.response.GetRankHistoryResponse;
+import com.goinmuls.sidehub.application.mapper.RankHistoryMapper;
+import com.goinmuls.sidehub.application.port.in.GetRankHistoryUseCase;
 import com.goinmuls.sidehub.application.port.out.MemberOutPort;
 import com.goinmuls.sidehub.application.port.out.RankingHistoryOutPort;
 import com.goinmuls.sidehub.domain.Member;
@@ -11,14 +13,15 @@ import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 import java.util.NoSuchElementException;
-import java.util.Optional;
+import java.util.stream.Collectors;
 
 @Service
 @Transactional
 @RequiredArgsConstructor
-public class RankHistoryApplicationService implements GetRankingHistoryUseCase {
+public class RankHistoryApplicationService implements GetRankHistoryUseCase {
 
     private final RankingHistoryOutPort rankingHistoryOutPort;
+    private final RankHistoryMapper rankHistoryMapper;
     private final MemberOutPort memberOutPort;
 
     /**
@@ -27,13 +30,16 @@ public class RankHistoryApplicationService implements GetRankingHistoryUseCase {
      * @return 해당 사용자의 랭킹 추이 히스토리 목록
      */
     @Override
-    public List<RankHistory> getRankHistories(Long memberId) {
+    public List<GetRankHistoryResponse> getRankHistories(Long memberId) {
 
         Member member = memberOutPort.findMember(memberId);
         if(member == null) {
             throw  new NoSuchElementException("사용자를 찾을 수 없습니다.");
         }
 
-        return rankingHistoryOutPort.getRankHistories(memberId);
+        List<RankHistory> rankHistories = rankingHistoryOutPort.getRankHistories(memberId);
+
+        return rankHistories.stream()
+                .map(rankHistoryMapper::toResponse).collect(Collectors.toList());
     }
 }
