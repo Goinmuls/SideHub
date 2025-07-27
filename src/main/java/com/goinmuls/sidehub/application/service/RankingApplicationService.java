@@ -4,6 +4,7 @@ import com.goinmuls.sidehub.adapter.in.dto.GetRankingRequest;
 import com.goinmuls.sidehub.application.port.in.GetRankingUseCase;
 import com.goinmuls.sidehub.application.port.out.MemberOutPort;
 import com.goinmuls.sidehub.application.port.out.RankingOutPort;
+import com.goinmuls.sidehub.domain.Member;
 import com.goinmuls.sidehub.domain.Ranking;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -28,8 +29,10 @@ public class RankingApplicationService implements GetRankingUseCase {
     @Override
     public Ranking getRanking(GetRankingRequest request) {
 
-        Optional.ofNullable(memberOutPort.findMember(request.getMemberId()))
-                .orElseThrow(() -> new NoSuchElementException("사용자를 찾을 수 없습니다."));
+        Member member = memberOutPort.findMember(request.getMemberId());
+        if(member == null) {
+            throw  new NoSuchElementException("사용자를 찾을 수 없습니다.");
+        }
 
         return rankingOutPort.getRanking(request);
     }

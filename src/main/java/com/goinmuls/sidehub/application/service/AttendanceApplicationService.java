@@ -3,6 +3,7 @@ package com.goinmuls.sidehub.application.service;
 import com.goinmuls.sidehub.application.port.in.CheckAttendanceUseCase;
 import com.goinmuls.sidehub.application.port.out.AttendanceOutPort;
 import com.goinmuls.sidehub.application.port.out.MemberOutPort;
+import com.goinmuls.sidehub.domain.Member;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -25,9 +26,10 @@ public class AttendanceApplicationService implements CheckAttendanceUseCase {
     @Override
     public void checkAttendance(Long memberId) {
 
-        Optional.ofNullable(memberOutPort.findMember(memberId))
-                .orElseThrow(() -> new NoSuchElementException("사용자를 찾을 수 없습니다."));
-
+        Member member = memberOutPort.findMember(memberId);
+        if(member == null) {
+            throw  new NoSuchElementException("사용자를 찾을 수 없습니다.");
+        }
         attendanceOutPort.createAttendance(memberId);
     }
 }

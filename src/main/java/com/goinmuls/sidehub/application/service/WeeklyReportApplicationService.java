@@ -4,6 +4,7 @@ import com.goinmuls.sidehub.adapter.in.dto.CreateWeeklyReportRequest;
 import com.goinmuls.sidehub.application.port.in.CreateWeeklyReportUseCase;
 import com.goinmuls.sidehub.application.port.out.MemberOutPort;
 import com.goinmuls.sidehub.application.port.out.WeeklyReportOutPort;
+import com.goinmuls.sidehub.domain.Member;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -26,8 +27,10 @@ public class WeeklyReportApplicationService implements CreateWeeklyReportUseCase
     @Override
     public void createWeeklyReport(CreateWeeklyReportRequest request) {
 
-        Optional.ofNullable(memberOutPort.findMember(request.getMemberId()))
-                .orElseThrow(() -> new NoSuchElementException("사용자를 찾을 수 없습니다."));
+        Member member = memberOutPort.findMember(request.getMemberId());
+        if(member == null) {
+            throw  new NoSuchElementException("사용자를 찾을 수 없습니다.");
+        }
 
         weeklyReportOutPort.createWeeklyReport(request);
     }

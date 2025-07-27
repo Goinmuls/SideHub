@@ -3,6 +3,7 @@ package com.goinmuls.sidehub.application.service;
 import com.goinmuls.sidehub.application.port.in.GetRankingHistoryUseCase;
 import com.goinmuls.sidehub.application.port.out.MemberOutPort;
 import com.goinmuls.sidehub.application.port.out.RankingHistoryOutPort;
+import com.goinmuls.sidehub.domain.Member;
 import com.goinmuls.sidehub.domain.RankHistory;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -28,8 +29,10 @@ public class RankHistoryApplicationService implements GetRankingHistoryUseCase {
     @Override
     public List<RankHistory> getRankHistories(Long memberId) {
 
-        Optional.ofNullable(memberOutPort.findMember(memberId))
-                .orElseThrow(() -> new NoSuchElementException("사용자를 찾을 수 없습니다."));
+        Member member = memberOutPort.findMember(memberId);
+        if(member == null) {
+            throw  new NoSuchElementException("사용자를 찾을 수 없습니다.");
+        }
 
         return rankingHistoryOutPort.getRankHistories(memberId);
     }

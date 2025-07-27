@@ -4,6 +4,7 @@ import com.goinmuls.sidehub.adapter.in.dto.GetStatisticRequest;
 import com.goinmuls.sidehub.application.port.in.GetStatisticUseCase;
 import com.goinmuls.sidehub.application.port.out.MemberOutPort;
 import com.goinmuls.sidehub.application.port.out.StatisticOutPort;
+import com.goinmuls.sidehub.domain.Member;
 import com.goinmuls.sidehub.domain.Statistic;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -28,8 +29,10 @@ public class StatisticApplicationService implements GetStatisticUseCase {
     @Override
     public Statistic getStatistic(GetStatisticRequest request) {
 
-        Optional.ofNullable(memberOutPort.findMember(request.getMemberId()))
-                .orElseThrow(() -> new NoSuchElementException("사용자를 찾을 수 없습니다."));
+        Member member = memberOutPort.findMember(request.getMemberId());
+        if(member == null) {
+            throw  new NoSuchElementException("사용자를 찾을 수 없습니다.");
+        }
 
         return statisticOutPort.getStatistic(request.getMemberId(), request.getStartOfWeek());
     }
