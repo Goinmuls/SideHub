@@ -1,6 +1,5 @@
 package com.goinmuls.sidehub.adapter.out.weeklyReport;
 
-import com.goinmuls.sidehub.adapter.in.dto.CreateWeeklyReportRequest;
 import com.goinmuls.sidehub.adapter.out.weeklyReport.entity.WeeklyReportEntity;
 import com.goinmuls.sidehub.adapter.out.weeklyReport.repository.WeeklyReportJpaRepository;
 import com.goinmuls.sidehub.application.port.out.WeeklyReportOutPort;

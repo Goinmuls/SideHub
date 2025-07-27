@@ -1,6 +1,6 @@
 package com.goinmuls.sidehub.adapter.in.rest;
 
-import com.goinmuls.sidehub.adapter.in.dto.GetStatisticRequest;
+import com.goinmuls.sidehub.adapter.in.dto.request.GetStatisticRequest;
 import com.goinmuls.sidehub.application.port.in.GetStatisticUseCase;
 import com.goinmuls.sidehub.domain.Statistic;
 import lombok.RequiredArgsConstructor;

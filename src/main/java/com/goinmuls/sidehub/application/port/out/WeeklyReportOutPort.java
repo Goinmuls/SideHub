@@ -1,7 +1,5 @@
 package com.goinmuls.sidehub.application.port.out;
 
-import com.goinmuls.sidehub.adapter.in.dto.CreateWeeklyReportRequest;
-
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 

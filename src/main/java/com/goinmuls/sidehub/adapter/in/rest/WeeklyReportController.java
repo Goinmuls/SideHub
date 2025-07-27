@@ -1,6 +1,6 @@
 package com.goinmuls.sidehub.adapter.in.rest;
 
-import com.goinmuls.sidehub.adapter.in.dto.CreateWeeklyReportRequest;
+import com.goinmuls.sidehub.adapter.in.dto.request.CreateWeeklyReportRequest;
 import com.goinmuls.sidehub.application.port.in.CreateWeeklyReportUseCase;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;

@@ -1,6 +1,6 @@
 package com.goinmuls.sidehub.adapter.in.rest;
 
-import com.goinmuls.sidehub.adapter.in.dto.GetRankingRequest;
+import com.goinmuls.sidehub.adapter.in.dto.request.GetRankingRequest;
 import com.goinmuls.sidehub.application.port.in.GetRankingUseCase;
 import com.goinmuls.sidehub.domain.Ranking;
 import lombok.RequiredArgsConstructor;

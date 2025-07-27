@@ -1,6 +1,6 @@
 package com.goinmuls.sidehub.application.service;
 
-import com.goinmuls.sidehub.adapter.in.dto.CreateWeeklyReportRequest;
+import com.goinmuls.sidehub.adapter.in.dto.request.CreateWeeklyReportRequest;
 import com.goinmuls.sidehub.application.port.in.CreateWeeklyReportUseCase;
 import com.goinmuls.sidehub.application.port.out.MemberOutPort;
 import com.goinmuls.sidehub.application.port.out.WeeklyReportOutPort;
@@ -10,7 +10,6 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.NoSuchElementException;
-import java.util.Optional;
 
 @Service
 @Transactional

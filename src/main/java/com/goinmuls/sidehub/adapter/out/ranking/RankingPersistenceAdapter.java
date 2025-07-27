@@ -1,6 +1,5 @@
 package com.goinmuls.sidehub.adapter.out.ranking;
 
-import com.goinmuls.sidehub.adapter.in.dto.GetRankingRequest;
 import com.goinmuls.sidehub.adapter.out.ranking.entity.RankingEntity;
 import com.goinmuls.sidehub.adapter.out.ranking.repository.RankingJpaRepository;
 import com.goinmuls.sidehub.application.port.out.RankingOutPort;

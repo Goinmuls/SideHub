@@ -1,6 +1,5 @@
 package com.goinmuls.sidehub.application.port.out;
 
-import com.goinmuls.sidehub.adapter.in.dto.GetRankingRequest;
 import com.goinmuls.sidehub.domain.Ranking;
 
 import java.time.LocalDate;

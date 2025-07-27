@@ -1,6 +1,5 @@
 package com.goinmuls.sidehub.domain.factory;
 
-import com.goinmuls.sidehub.adapter.in.dto.GetStatisticRequest;
 import com.goinmuls.sidehub.adapter.out.statistic.entity.StatisticEntity;
 import com.goinmuls.sidehub.domain.Statistic;
 import org.springframework.stereotype.Component;

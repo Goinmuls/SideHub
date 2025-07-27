@@ -1,6 +1,6 @@
 package com.goinmuls.sidehub.application.service;
 
-import com.goinmuls.sidehub.adapter.in.dto.GetStatisticRequest;
+import com.goinmuls.sidehub.adapter.in.dto.request.GetStatisticRequest;
 import com.goinmuls.sidehub.application.port.in.GetStatisticUseCase;
 import com.goinmuls.sidehub.application.port.out.MemberOutPort;
 import com.goinmuls.sidehub.application.port.out.StatisticOutPort;
@@ -11,7 +11,6 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.NoSuchElementException;
-import java.util.Optional;
 
 @Service
 @Transactional

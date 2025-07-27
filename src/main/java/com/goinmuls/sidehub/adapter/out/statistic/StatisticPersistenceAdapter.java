@@ -1,6 +1,5 @@
 package com.goinmuls.sidehub.adapter.out.statistic;
 
-import com.goinmuls.sidehub.adapter.in.dto.GetStatisticRequest;
 import com.goinmuls.sidehub.adapter.out.statistic.entity.StatisticEntity;
 import com.goinmuls.sidehub.adapter.out.statistic.repository.StatisticJpaRepository;
 import com.goinmuls.sidehub.application.port.out.StatisticOutPort;
