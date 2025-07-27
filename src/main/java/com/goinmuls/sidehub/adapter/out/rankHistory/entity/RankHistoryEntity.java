@@ -34,7 +34,7 @@ public class RankHistoryEntity {
     @Comment("해당 주의 기여 점수")
     private int rankPosition;
 
-    @Column(name = "")
+    @Column(name = "contribution_score")
     @Comment("해당 주의 랭킹 순위")
     private int contributionScore;
 
