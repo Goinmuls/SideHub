@@ -31,6 +31,6 @@ public class StatisticApplicationService implements GetStatisticUseCase {
         Optional.ofNullable(memberOutPort.findMember(request.getMemberId()))
                 .orElseThrow(() -> new NoSuchElementException("사용자를 찾을 수 없습니다."));
 
-        return statisticOutPort.getStatistic(request);
+        return statisticOutPort.getStatistic(request.getMemberId(), request.getStartOfWeek());
     }
 }
