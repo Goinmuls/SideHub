@@ -53,6 +53,17 @@ public class ChatMessageDocument {
     @Field("deleted_at")
     private LocalDateTime deletedAt;
 
+    public static ChatMessageDocument of(
+            String id, String chatRoomId, String senderId, ChatMessageType chatMessageType, String content,
+            List<String> readByUsers, List<ChatFile> chatFiles, boolean isDeleted, ChatMessageDeleteType deleteType,
+            LocalDateTime createdAt, LocalDateTime deletedAt
+    ) {
+        return new ChatMessageDocument(
+                id, chatRoomId, senderId, chatMessageType, content,
+                readByUsers, chatFiles, isDeleted, deleteType, createdAt, deletedAt
+        );
+    }
+
     @Override
     public boolean equals(Object o) {
         if (!(o instanceof ChatMessageDocument that)) return false;
