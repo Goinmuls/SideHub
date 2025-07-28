@@ -42,10 +42,10 @@ public class ChatMessageDocument {
     private List<ChatFile> chatFiles;   // 채팅 파일 목록
 
     @Field("is_deleted")
-    private boolean isDeleted;
+    private boolean isDeleted;          // 삭제 여부
 
     @Field("delete_type")
-    private ChatMessageDeleteType deleteType;
+    private ChatMessageDeleteType deleteType;   // 삭제 유형
 
     @Field("created_at")
     private LocalDateTime createdAt;    // 생성 일시
