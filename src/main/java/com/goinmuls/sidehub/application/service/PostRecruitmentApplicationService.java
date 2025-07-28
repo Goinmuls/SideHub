@@ -18,9 +18,14 @@ public class PostRecruitmentApplicationService implements PostRecruitmentUseCase
      * @param recruitment 모집공고
      * @return 모집공고 id
      */
-    @Transactional(readOnly = true)
+    @Transactional
     @Override
     public Long createRecruitment(Recruitment recruitment) {
+
+        if (recruitment == null) {
+            throw new RuntimeException("생성할 모집 공고가 없습니다.");
+        }
+
         Long recruitmentId = postRecruitmentOutPort.save(recruitment);
 
         if (recruitmentId == null) {

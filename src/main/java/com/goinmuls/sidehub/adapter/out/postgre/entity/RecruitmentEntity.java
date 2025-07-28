@@ -51,9 +51,9 @@ public class RecruitmentEntity {
     @Column(name = "status")
     private RecruitmentStatus recruitmentStatus;
 
-    @Comment("생성자 이름")
-    @Column(name = "recruiter_name")
-    private String recruiterName;
+    @Comment("생성자 id")
+    @Column(name = "recruiter_id")
+    private String recruiterId;
 
     @Comment("총 채용 인원")
     @Column(name = "head_count")
@@ -78,13 +78,13 @@ public class RecruitmentEntity {
     public static RecruitmentEntity of(
             Long recruitmentId, String name, String introduction,
             String description, String skill, LocalDateTime startAt, LocalDateTime endAt,
-            RecruitmentStatus recruitmentStatus, String recruiterName, int headCount,
+            RecruitmentStatus recruitmentStatus, String recruiterId, int headCount,
             LocalDateTime createdAt, LocalDateTime editedAt, LocalDateTime deletedAt,
             boolean isDeleted
     ) {
         return new RecruitmentEntity(
                 recruitmentId, name, introduction, description,
-                skill, startAt, endAt, recruitmentStatus, recruiterName,
+                skill, startAt, endAt, recruitmentStatus, recruiterId,
                 headCount, createdAt, editedAt, deletedAt, isDeleted);
     }
 

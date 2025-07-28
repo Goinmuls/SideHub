@@ -1,5 +1,6 @@
 package com.goinmuls.sidehub.adapter.in.rest;
 
+import com.goinmuls.sidehub.adapter.in.rest.dto.request.PostRecruitmentRequestDTO;
 import com.goinmuls.sidehub.adapter.in.rest.dto.response.RecruitmentResponseDTO;
 import com.goinmuls.sidehub.application.port.in.GetRecruitmentUseCase;
 import com.goinmuls.sidehub.application.port.in.PostRecruitmentUseCase;
@@ -19,11 +20,12 @@ public class RecruitmentController {
 
     /**
      * 채용 공고 게시
-     * @param recruitment
+     * @param postRecruitmentRequestDTO
      * @return 모집공고 id
      */
     @PostMapping
-    public Long postRecruitment(@RequestBody Recruitment recruitment) {
+    public Long postRecruitment(@RequestBody PostRecruitmentRequestDTO postRecruitmentRequestDTO) {
+        Recruitment recruitment = postRecruitmentRequestDTO.toDomain();
         return postRecruitmentUseCase.createRecruitment(recruitment);
     }
 

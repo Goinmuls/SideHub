@@ -26,7 +26,7 @@ public class RecruitmentApplicationService implements GetRecruitmentUseCase {
         List<Recruitment> recruitments = recruitmentOutPort.findAllByRecruitmentId();
 
         if (CollectionUtils.isEmpty(recruitments)) {
-            throw new NoSuchElementException("모집 공고들을 찾을 수 없습니다.");
+            throw new NoSuchElementException("모집 공고가 존재하지 않습니다.");
         }
 
         return recruitments.stream()

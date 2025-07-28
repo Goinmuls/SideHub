@@ -1,4 +1,4 @@
-package com.goinmuls.sidehub.domain;
+package com.goinmuls.sidehub.adapter.in.rest.dto.request;
 
 import com.goinmuls.sidehub.domain.enums.RecruitmentStatus;
 import lombok.AccessLevel;
@@ -7,11 +7,12 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 
 import java.time.LocalDateTime;
+import com.goinmuls.sidehub.domain.Recruitment;
 
 @Getter
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 @AllArgsConstructor(access = AccessLevel.PRIVATE)
-public class Recruitment {
+public class PostRecruitmentRequestDTO {
     private Long recruitmentId;
     private String name;
     private String introduction;
@@ -27,18 +28,26 @@ public class Recruitment {
     private LocalDateTime deletedAt;
     private boolean isDeleted;
 
-    public static Recruitment of(
-            Long recruitmentId, String name, String introduction,
-            String description, String skill, LocalDateTime startAt,
-            LocalDateTime endAt, RecruitmentStatus recruitmentStatus, String recruiterId,
-            int headCount, LocalDateTime createdAt, LocalDateTime editedAt,
-            LocalDateTime deletedAt, boolean isDeleted
-    ) {
-        return new Recruitment(
-                recruitmentId, name, introduction,
-                description, skill, startAt, endAt,
-                recruitmentStatus, recruiterId, headCount,
-                createdAt, editedAt, deletedAt, isDeleted
+    /**
+     * DTO -> 도메인 객체 변환
+     * @return Recruitment 도메인 객체
+     */
+    public Recruitment toDomain() {
+        return Recruitment.of(
+                recruitmentId,
+                name,
+                introduction,
+                description,
+                skill,
+                startAt,
+                endAt,
+                recruitmentStatus,
+                recruiterId,
+                headCount,
+                createdAt,
+                editedAt,
+                deletedAt,
+                isDeleted
         );
     }
 }

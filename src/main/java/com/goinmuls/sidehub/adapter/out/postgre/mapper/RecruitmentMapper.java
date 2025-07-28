@@ -21,7 +21,7 @@ public class RecruitmentMapper {
                 recruitment.getRecruitmentId(), recruitment.getName(),
                 recruitment.getIntroduction(), recruitment.getDescription(),
                 recruitment.getSkill(), recruitment.getStartAt(), recruitment.getEndAt(),
-                recruitment.getRecruitmentStatus(), recruitment.getRecruiterName(),
+                recruitment.getRecruitmentStatus(), recruitment.getRecruiterId(),
                 recruitment.getHeadCount(), recruitment.getCreatedAt(),
                 recruitment.getEditedAt(), recruitment.getDeletedAt(),
                 recruitment.isDeleted()

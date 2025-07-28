@@ -17,14 +17,14 @@ public class RecruitmentFactory {
 
         return Recruitment.of(
                 recruitmentEntity.getRecruitmentId(),
-                recruitmentEntity.getRecruiterName(),
+                recruitmentEntity.getName(),
                 recruitmentEntity.getIntroduction(),
                 recruitmentEntity.getDescription(),
                 recruitmentEntity.getSkill(),
                 recruitmentEntity.getStartAt(),
                 recruitmentEntity.getEndAt(),
                 recruitmentEntity.getRecruitmentStatus(),
-                recruitmentEntity.getRecruiterName(),
+                recruitmentEntity.getRecruiterId(),
                 recruitmentEntity.getHeadCount(),
                 recruitmentEntity.getCreatedAt(),
                 recruitmentEntity.getEditedAt(),

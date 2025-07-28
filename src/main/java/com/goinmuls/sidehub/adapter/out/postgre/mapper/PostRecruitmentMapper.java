@@ -26,7 +26,7 @@ public class PostRecruitmentMapper {
                 recruitment.getStartAt(),
                 recruitment.getEndAt(),
                 recruitment.getRecruitmentStatus(),
-                recruitment.getRecruiterName(),
+                recruitment.getRecruiterId(),
                 recruitment.getHeadCount(),
                 recruitment.getCreatedAt(),
                 recruitment.getEditedAt(),
