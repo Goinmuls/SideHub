@@ -1,7 +1,7 @@
 package com.goinmuls.sidehub.application.service;
 
-import com.goinmuls.sidehub.adapter.in.dto.request.GetStatisticRequest;
-import com.goinmuls.sidehub.adapter.in.dto.response.GetStatisticResponse;
+import com.goinmuls.sidehub.adapter.in.dto.request.GetStatisticRequestDto;
+import com.goinmuls.sidehub.adapter.in.dto.response.GetStatisticResponseDto;
 import com.goinmuls.sidehub.application.mapper.StatisticMapper;
 import com.goinmuls.sidehub.application.port.in.GetStatisticUseCase;
 import com.goinmuls.sidehub.application.port.out.MemberOutPort;
@@ -15,7 +15,7 @@ import org.springframework.transaction.annotation.Transactional;
 import java.util.NoSuchElementException;
 
 @Service
-@Transactional
+@Transactional(readOnly = true)
 @RequiredArgsConstructor
 public class StatisticApplicationService implements GetStatisticUseCase {
 
@@ -29,7 +29,7 @@ public class StatisticApplicationService implements GetStatisticUseCase {
      * @return 해당 사용자의 금주 통계 정보
      */
     @Override
-    public GetStatisticResponse getStatistic(GetStatisticRequest request) {
+    public GetStatisticResponseDto getStatistic(GetStatisticRequestDto request) {
 
         Member member = memberOutPort.findMember(request.getMemberId());
         if(member == null) {

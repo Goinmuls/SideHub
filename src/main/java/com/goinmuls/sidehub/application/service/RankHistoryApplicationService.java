@@ -1,6 +1,6 @@
 package com.goinmuls.sidehub.application.service;
 
-import com.goinmuls.sidehub.adapter.in.dto.response.GetRankHistoryResponse;
+import com.goinmuls.sidehub.adapter.in.dto.response.GetRankHistoryResponseDto;
 import com.goinmuls.sidehub.application.mapper.RankHistoryMapper;
 import com.goinmuls.sidehub.application.port.in.GetRankHistoryUseCase;
 import com.goinmuls.sidehub.application.port.out.MemberOutPort;
@@ -16,7 +16,7 @@ import java.util.NoSuchElementException;
 import java.util.stream.Collectors;
 
 @Service
-@Transactional
+@Transactional(readOnly = true)
 @RequiredArgsConstructor
 public class RankHistoryApplicationService implements GetRankHistoryUseCase {
 
@@ -30,7 +30,7 @@ public class RankHistoryApplicationService implements GetRankHistoryUseCase {
      * @return 해당 사용자의 랭킹 추이 히스토리 목록
      */
     @Override
-    public List<GetRankHistoryResponse> getRankHistories(Long memberId) {
+    public List<GetRankHistoryResponseDto> getRankHistories(Long memberId) {
 
         Member member = memberOutPort.findMember(memberId);
         if(member == null) {

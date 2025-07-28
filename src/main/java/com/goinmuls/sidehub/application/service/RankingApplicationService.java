@@ -1,7 +1,7 @@
 package com.goinmuls.sidehub.application.service;
 
-import com.goinmuls.sidehub.adapter.in.dto.request.GetRankingRequest;
-import com.goinmuls.sidehub.adapter.in.dto.response.GetRankingResponse;
+import com.goinmuls.sidehub.adapter.in.dto.request.GetRankingRequestDto;
+import com.goinmuls.sidehub.adapter.in.dto.response.GetRankingResponseDto;
 import com.goinmuls.sidehub.application.mapper.RankingMapper;
 import com.goinmuls.sidehub.application.port.in.GetRankingUseCase;
 import com.goinmuls.sidehub.application.port.out.MemberOutPort;
@@ -15,7 +15,7 @@ import org.springframework.transaction.annotation.Transactional;
 import java.util.NoSuchElementException;
 
 @Service
-@Transactional
+@Transactional(readOnly = true)
 @RequiredArgsConstructor
 public class RankingApplicationService implements GetRankingUseCase {
 
@@ -29,7 +29,7 @@ public class RankingApplicationService implements GetRankingUseCase {
      * @return 해당 사용자의 금주 랭킹 정보
      */
     @Override
-    public GetRankingResponse getRanking(GetRankingRequest request) {
+    public GetRankingResponseDto getRanking(GetRankingRequestDto request) {
 
         Member member = memberOutPort.findMember(request.getMemberId());
         if(member == null) {
