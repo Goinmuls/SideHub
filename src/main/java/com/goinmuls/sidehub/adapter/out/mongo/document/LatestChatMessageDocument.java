@@ -18,16 +18,16 @@ public class LatestChatMessageDocument {
     @Id
     private String id;
 
-    @Field(name = "chat_room_id")
+    @Field("chat_room_id")
     private String chatRoomId;  // 채팅방 아이디
 
-    @Field(name = "message")
+    @Field("message")
     private String message;     // 최신 메세지
 
-    @Field(name = "unread_message_count")
+    @Field("unread_message_count")
     private int unreadMessageCount;    // 안 읽은 수
 
-    @Field(name = "created_at")
+    @Field("created_at")
     private LocalDateTime createdAt;    // 생성 일시
 
     @Override
