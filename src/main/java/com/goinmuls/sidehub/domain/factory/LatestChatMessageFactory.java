@@ -7,10 +7,15 @@ import org.springframework.stereotype.Component;
 @Component
 public class LatestChatMessageFactory {
 
+    /**
+     * 다큐먼트 -> 도메인 변환
+     * @param latestChatMessageDocument 다큐먼트
+     * @return 도메인
+     */
     public LatestChatMessage fromDocument(LatestChatMessageDocument latestChatMessageDocument) {
         return LatestChatMessage.of(
                 latestChatMessageDocument.getId(),
-                latestChatMessageDocument.getChatRoomId(),
+                latestChatMessageDocument.getMessage(),
                 latestChatMessageDocument.getMessage(),
                 latestChatMessageDocument.getUnreadMessageCount(),
                 latestChatMessageDocument.getCreatedAt()
