@@ -15,11 +15,11 @@ import java.util.List;
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 public class ChatMessage {
     private String id;
-    private String chatRoomId;
-    private String senderId;
+    private Long chatRoomId;
+    private Long senderId;
     private ChatMessageType chatMessageType;
     private String content;
-    private List<String> readByUsers;
+    private List<Long> readByUsers;
     private List<ChatFile> chatFiles;
     private boolean isDeleted;
     private ChatMessageDeleteType deleteType;
@@ -27,8 +27,8 @@ public class ChatMessage {
     private LocalDateTime deletedAt;
 
     public static ChatMessage of(
-            String id, String chatRoomId, String senderId, ChatMessageType chatMessageType, String content,
-            List<String> readByUsers, List<ChatFile> chatFiles, boolean isDeleted, ChatMessageDeleteType deleteType,
+            String id, Long chatRoomId, Long senderId, ChatMessageType chatMessageType, String content,
+            List<Long> readByUsers, List<ChatFile> chatFiles, boolean isDeleted, ChatMessageDeleteType deleteType,
             LocalDateTime createdAt, LocalDateTime deletedAt
     ) {
         return new ChatMessage(

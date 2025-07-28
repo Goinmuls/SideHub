@@ -15,7 +15,8 @@ public class LatestChatMessageFactory {
     public LatestChatMessage fromDocument(LatestChatMessageDocument latestChatMessageDocument) {
         return LatestChatMessage.of(
                 latestChatMessageDocument.getId(),
-                latestChatMessageDocument.getMessage(),
+                latestChatMessageDocument.getChatRoomId(),
+                latestChatMessageDocument.getMemberId(),
                 latestChatMessageDocument.getMessage(),
                 latestChatMessageDocument.getUnreadMessageCount(),
                 latestChatMessageDocument.getCreatedAt()

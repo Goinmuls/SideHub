@@ -24,10 +24,10 @@ public class ChatMessageDocument {
     private String id;
 
     @Field("chat_room_id")
-    private String chatRoomId;  // 채팅방 아이디
+    private Long chatRoomId;  // 채팅방 아이디
 
     @Field("sender_id")
-    private String senderId;    // 보낸 사람 아이디
+    private Long senderId;    // 보낸 사람 아이디
 
     @Field("chat_message_type")
     private ChatMessageType chatMessageType;    // 채팅 타입
@@ -36,7 +36,7 @@ public class ChatMessageDocument {
     private String content;     // 채팅 내용
 
     @Field("read_by_users")
-    private List<String> readByUsers;   // 읽은 사람 아아디 목록
+    private List<Long> readByUsers;   // 읽은 사람 아아디 목록
 
     @Field("chat_file")
     private List<ChatFile> chatFiles;   // 채팅 파일 목록
@@ -54,8 +54,8 @@ public class ChatMessageDocument {
     private LocalDateTime deletedAt;
 
     public static ChatMessageDocument of(
-            String id, String chatRoomId, String senderId, ChatMessageType chatMessageType, String content,
-            List<String> readByUsers, List<ChatFile> chatFiles, boolean isDeleted, ChatMessageDeleteType deleteType,
+            String id, Long chatRoomId, Long senderId, ChatMessageType chatMessageType, String content,
+            List<Long> readByUsers, List<ChatFile> chatFiles, boolean isDeleted, ChatMessageDeleteType deleteType,
             LocalDateTime createdAt, LocalDateTime deletedAt
     ) {
         return new ChatMessageDocument(

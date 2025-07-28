@@ -19,7 +19,10 @@ public class LatestChatMessageDocument {
     private String id;
 
     @Field("chat_room_id")
-    private String chatRoomId;  // 채팅방 아이디
+    private Long chatRoomId;  // 채팅방 아이디
+
+    @Field("member_id")
+    private Long memberId;      // 유저 아이디
 
     @Field("message")
     private String message;     // 최신 메세지

@@ -16,6 +16,7 @@ public class LatestChatMessageMapper {
         return GetLatestChatMessageResponseDto.of(
                 latestChatMessage.getId(),
                 latestChatMessage.getChatRoomId(),
+                latestChatMessage.getMemberId(),
                 latestChatMessage.getMessage(),
                 latestChatMessage.getUnreadMessageCount(),
                 latestChatMessage.getCreatedAt()
