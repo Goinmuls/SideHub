@@ -53,13 +53,15 @@ public class MemberProfileEntity {
     private LocalDateTime deletedAt;
 
     @Override
-    public boolean equals(Object o) {
+    public final boolean equals(Object o) {
+        if (this == o) return true;
         if (!(o instanceof MemberProfileEntity that)) return false;
-        return isDeleted == that.isDeleted && Objects.equals(memberProfileId, that.memberProfileId) && Objects.equals(fileMetaId, that.fileMetaId) && Objects.equals(memberId, that.memberId) && memberProfileType == that.memberProfileType && Objects.equals(createdAt, that.createdAt) && Objects.equals(updatedAt, that.updatedAt) && Objects.equals(deletedAt, that.deletedAt);
+
+        return memberProfileId.equals(that.memberProfileId);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(memberProfileId, fileMetaId, memberId, memberProfileType, isDeleted, createdAt, updatedAt, deletedAt);
+        return memberProfileId.hashCode();
     }
 }

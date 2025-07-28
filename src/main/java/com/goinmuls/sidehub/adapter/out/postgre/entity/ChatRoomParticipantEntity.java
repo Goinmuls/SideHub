@@ -65,14 +65,15 @@ public class ChatRoomParticipantEntity {
     private LocalDateTime updatedAt;
 
     @Override
-    public boolean equals(Object o) {
-
+    public final boolean equals(Object o) {
+        if (this == o) return true;
         if (!(o instanceof ChatRoomParticipantEntity that)) return false;
-        return isKicked == that.isKicked && isExited == that.isExited && Objects.equals(chatRoomParticipantId, that.chatRoomParticipantId) && Objects.equals(chatRoomId, that.chatRoomId) && Objects.equals(memberId, that.memberId) && role == that.role && Objects.equals(kickerId, that.kickerId) && Objects.equals(kickedAt, that.kickedAt) && Objects.equals(exitedAt, that.exitedAt) && Objects.equals(createdAt, that.createdAt) && Objects.equals(updatedAt, that.updatedAt);
+
+        return chatRoomParticipantId.equals(that.chatRoomParticipantId);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(chatRoomParticipantId, chatRoomId, memberId, role, kickerId, isKicked, isExited, kickedAt, exitedAt, createdAt, updatedAt);
+        return chatRoomParticipantId.hashCode();
     }
 }

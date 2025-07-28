@@ -45,14 +45,15 @@ public class ChatRoomEntity {
     private LocalDateTime updatedAt;
 
     @Override
-    public boolean equals(Object o) {
-
+    public final boolean equals(Object o) {
+        if (this == o) return true;
         if (!(o instanceof ChatRoomEntity that)) return false;
-        return isDeleted == that.isDeleted && Objects.equals(chatRoomId, that.chatRoomId) && type == that.type && Objects.equals(name, that.name) && Objects.equals(createdAt, that.createdAt) && Objects.equals(updatedAt, that.updatedAt);
+
+        return chatRoomId.equals(that.chatRoomId);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(chatRoomId, type, name, isDeleted, createdAt, updatedAt);
+        return chatRoomId.hashCode();
     }
 }

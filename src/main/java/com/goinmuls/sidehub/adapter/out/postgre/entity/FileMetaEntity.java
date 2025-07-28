@@ -61,13 +61,15 @@ public class FileMetaEntity {
     private LocalDateTime deletedAt;
 
     @Override
-    public boolean equals(Object o) {
+    public final boolean equals(Object o) {
+        if (this == o) return true;
         if (!(o instanceof FileMetaEntity that)) return false;
-        return originalSize == that.originalSize && isCompressed == that.isCompressed && compressedSize == that.compressedSize && size == that.size && Objects.equals(fileMetaId, that.fileMetaId) && Objects.equals(memberId, that.memberId) && Objects.equals(filePath, that.filePath) && mimeType == that.mimeType && Objects.equals(createdAt, that.createdAt) && Objects.equals(deletedAt, that.deletedAt);
+
+        return fileMetaId.equals(that.fileMetaId);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(fileMetaId, memberId, filePath, originalSize, isCompressed, compressedSize, mimeType, size, createdAt, deletedAt);
+        return fileMetaId.hashCode();
     }
 }

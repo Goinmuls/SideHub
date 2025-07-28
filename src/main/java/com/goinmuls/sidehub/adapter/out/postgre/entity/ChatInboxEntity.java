@@ -50,13 +50,15 @@ public class ChatInboxEntity {
     }
 
     @Override
-    public boolean equals(Object o) {
+    public final boolean equals(Object o) {
+        if (this == o) return true;
         if (!(o instanceof ChatInboxEntity that)) return false;
-        return Objects.equals(chatInboxId, that.chatInboxId) && Objects.equals(chatOutboxId, that.chatOutboxId) && Objects.equals(eventType, that.eventType) && Objects.equals(payload, that.payload) && Objects.equals(topic, that.topic) && Objects.equals(createdAt, that.createdAt);
+
+        return chatInboxId.equals(that.chatInboxId);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(chatInboxId, chatOutboxId, eventType, payload, topic, createdAt);
+        return chatInboxId.hashCode();
     }
 }

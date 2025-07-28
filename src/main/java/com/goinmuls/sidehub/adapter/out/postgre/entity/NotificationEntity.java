@@ -45,13 +45,15 @@ public class NotificationEntity {
     private LocalDateTime createdAt;
 
     @Override
-    public boolean equals(Object o) {
+    public final boolean equals(Object o) {
+        if (this == o) return true;
         if (!(o instanceof NotificationEntity that)) return false;
-        return Objects.equals(notificationId, that.notificationId) && Objects.equals(senderId, that.senderId) && Objects.equals(content, that.content) && notificationStatus == that.notificationStatus && notificationType == that.notificationType && Objects.equals(createdAt, that.createdAt);
+
+        return notificationId.equals(that.notificationId);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(notificationId, senderId, content, notificationStatus, notificationType, createdAt);
+        return notificationId.hashCode();
     }
 }

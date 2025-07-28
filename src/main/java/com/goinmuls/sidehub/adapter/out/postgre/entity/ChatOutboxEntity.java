@@ -55,13 +55,15 @@ public class ChatOutboxEntity {
     }
 
     @Override
-    public boolean equals(Object o) {
+    public final boolean equals(Object o) {
+        if (this == o) return true;
         if (!(o instanceof ChatOutboxEntity that)) return false;
-        return Objects.equals(chatOutboxId, that.chatOutboxId) && Objects.equals(eventType, that.eventType) && Objects.equals(payload, that.payload) && status == that.status && Objects.equals(topic, that.topic) && Objects.equals(createdAt, that.createdAt) && Objects.equals(updatedAt, that.updatedAt);
+
+        return chatOutboxId.equals(that.chatOutboxId);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(chatOutboxId, eventType, payload, status, topic, createdAt, updatedAt);
+        return chatOutboxId.hashCode();
     }
 }

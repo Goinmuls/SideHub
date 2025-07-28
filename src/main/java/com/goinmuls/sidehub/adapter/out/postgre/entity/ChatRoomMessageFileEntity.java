@@ -47,14 +47,15 @@ public class ChatRoomMessageFileEntity {
     private LocalDateTime deletedAt;
 
     @Override
-    public boolean equals(Object o) {
-
+    public final boolean equals(Object o) {
+        if (this == o) return true;
         if (!(o instanceof ChatRoomMessageFileEntity that)) return false;
-        return isDeleted == that.isDeleted && Objects.equals(chatRoomMessageFileId, that.chatRoomMessageFileId) && Objects.equals(chatRoomId, that.chatRoomId) && Objects.equals(fileMetaId, that.fileMetaId) && Objects.equals(memberId, that.memberId) && Objects.equals(createdAt, that.createdAt) && Objects.equals(deletedAt, that.deletedAt);
+
+        return chatRoomMessageFileId.equals(that.chatRoomMessageFileId);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(chatRoomMessageFileId, chatRoomId, fileMetaId, memberId, isDeleted, createdAt, deletedAt);
+        return chatRoomMessageFileId.hashCode();
     }
 }
