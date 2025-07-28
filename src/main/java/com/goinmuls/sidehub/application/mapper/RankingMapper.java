@@ -1,6 +1,6 @@
 package com.goinmuls.sidehub.application.mapper;
 
-import com.goinmuls.sidehub.adapter.in.dto.response.GetRankingResponse;
+import com.goinmuls.sidehub.adapter.in.dto.response.GetRankingResponseDto;
 import com.goinmuls.sidehub.domain.Ranking;
 import org.springframework.stereotype.Component;
 
@@ -12,12 +12,12 @@ public class RankingMapper {
      * @param ranking (도메인)
      * @return GetRankingResponse (응답 객체)
      */
-    public GetRankingResponse toResponse(Ranking ranking) {
+    public GetRankingResponseDto toResponse(Ranking ranking) {
         if (ranking == null) {
             return null;
         }
 
-        return GetRankingResponse.of(
+        return GetRankingResponseDto.of(
                 ranking.getId(),
                 ranking.getWeekStart(),
                 ranking.getRankPosition(),

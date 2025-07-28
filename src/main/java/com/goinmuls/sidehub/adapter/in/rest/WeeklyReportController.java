@@ -1,6 +1,6 @@
 package com.goinmuls.sidehub.adapter.in.rest;
 
-import com.goinmuls.sidehub.adapter.in.dto.request.CreateWeeklyReportRequest;
+import com.goinmuls.sidehub.adapter.in.dto.request.CreateWeeklyReportRequestDto;
 import com.goinmuls.sidehub.application.port.in.CreateWeeklyReportUseCase;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
@@ -18,8 +18,8 @@ public class WeeklyReportController {
     private final CreateWeeklyReportUseCase createWeeklyReportUseCase;
 
     @PostMapping
-    public ResponseEntity<Void> createWeeklyReport(@RequestBody CreateWeeklyReportRequest request) {
-        createWeeklyReportUseCase.createWeeklyReport(request);
+    public ResponseEntity<Void> createWeeklyReport(@RequestBody CreateWeeklyReportRequestDto createWeeklyReportRequestDto) {
+        createWeeklyReportUseCase.createWeeklyReport(createWeeklyReportRequestDto);
         return ResponseEntity.status(HttpStatus.CREATED).build();
     }
 }

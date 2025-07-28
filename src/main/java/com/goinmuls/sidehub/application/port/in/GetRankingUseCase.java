@@ -1,9 +1,8 @@
 package com.goinmuls.sidehub.application.port.in;
 
-import com.goinmuls.sidehub.adapter.in.dto.request.GetRankingRequest;
-import com.goinmuls.sidehub.adapter.in.dto.response.GetRankingResponse;
-import com.goinmuls.sidehub.domain.Ranking;
+import com.goinmuls.sidehub.adapter.in.dto.request.GetRankingRequestDto;
+import com.goinmuls.sidehub.adapter.in.dto.response.GetRankingResponseDto;
 
 public interface GetRankingUseCase {
-    GetRankingResponse getRanking(GetRankingRequest request);
+    GetRankingResponseDto getRanking(GetRankingRequestDto request);
 }

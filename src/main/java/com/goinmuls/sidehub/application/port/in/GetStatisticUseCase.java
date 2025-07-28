@@ -1,9 +1,8 @@
 package com.goinmuls.sidehub.application.port.in;
 
-import com.goinmuls.sidehub.adapter.in.dto.request.GetStatisticRequest;
-import com.goinmuls.sidehub.adapter.in.dto.response.GetStatisticResponse;
-import com.goinmuls.sidehub.domain.Statistic;
+import com.goinmuls.sidehub.adapter.in.dto.request.GetStatisticRequestDto;
+import com.goinmuls.sidehub.adapter.in.dto.response.GetStatisticResponseDto;
 
 public interface GetStatisticUseCase {
-    GetStatisticResponse getStatistic(GetStatisticRequest request);
+    GetStatisticResponseDto getStatistic(GetStatisticRequestDto request);
 }

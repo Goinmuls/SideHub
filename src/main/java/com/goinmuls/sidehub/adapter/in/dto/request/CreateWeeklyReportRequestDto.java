@@ -6,7 +6,7 @@ import java.time.LocalDate;
 import java.time.LocalDateTime;
 
 @Getter
-public class CreateWeeklyReportRequest {
+public class CreateWeeklyReportRequestDto {
 
     private Long memberId;
     private String channel;

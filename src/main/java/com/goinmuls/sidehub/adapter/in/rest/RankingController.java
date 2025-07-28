@@ -1,9 +1,8 @@
 package com.goinmuls.sidehub.adapter.in.rest;
 
-import com.goinmuls.sidehub.adapter.in.dto.request.GetRankingRequest;
-import com.goinmuls.sidehub.adapter.in.dto.response.GetRankingResponse;
+import com.goinmuls.sidehub.adapter.in.dto.request.GetRankingRequestDto;
+import com.goinmuls.sidehub.adapter.in.dto.response.GetRankingResponseDto;
 import com.goinmuls.sidehub.application.port.in.GetRankingUseCase;
-import com.goinmuls.sidehub.domain.Ranking;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -19,8 +18,8 @@ public class RankingController {
     private final GetRankingUseCase getRankingUseCase;
 
     @GetMapping
-    public ResponseEntity<GetRankingResponse> getRanking(GetRankingRequest request) {
-        GetRankingResponse ranking = getRankingUseCase.getRanking(request);
+    public ResponseEntity<GetRankingResponseDto> getRanking(GetRankingRequestDto getRankingRequestDto) {
+        GetRankingResponseDto ranking = getRankingUseCase.getRanking(getRankingRequestDto);
         return ResponseEntity.status(HttpStatus.OK).body(ranking);
     }
 }

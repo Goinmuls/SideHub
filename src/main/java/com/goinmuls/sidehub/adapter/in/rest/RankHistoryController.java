@@ -1,6 +1,6 @@
 package com.goinmuls.sidehub.adapter.in.rest;
 
-import com.goinmuls.sidehub.adapter.in.dto.response.GetRankHistoryResponse;
+import com.goinmuls.sidehub.adapter.in.dto.response.GetRankHistoryResponseDto;
 import com.goinmuls.sidehub.application.port.in.GetRankHistoryUseCase;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
@@ -20,8 +20,8 @@ public class RankHistoryController {
     private final GetRankHistoryUseCase getRankHistoryUseCase;
 
     @GetMapping("/{id}")
-    public ResponseEntity<List<GetRankHistoryResponse>> getRankingHistories(@PathVariable("id") Long id) {
-        List<GetRankHistoryResponse> rankHistories = getRankHistoryUseCase.getRankHistories(id);
+    public ResponseEntity<List<GetRankHistoryResponseDto>> getRankingHistories(@PathVariable("id") Long id) {
+        List<GetRankHistoryResponseDto> rankHistories = getRankHistoryUseCase.getRankHistories(id);
         return ResponseEntity.status(HttpStatus.OK).body(rankHistories);
     }
 }

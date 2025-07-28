@@ -13,7 +13,7 @@ import java.time.LocalDate;
 @Getter
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 @AllArgsConstructor(access = AccessLevel.PRIVATE)
-public class GetStatisticResponse {
+public class GetStatisticResponseDto {
     private Long id;
     private LocalDate weekStart;
     private int taskDoneCount;
@@ -21,7 +21,7 @@ public class GetStatisticResponse {
     private int contributionScore;
 
     // factory method
-    public static GetStatisticResponse of(Long id, LocalDate weekStart, int taskDoneCount, int attendanceCount, int contributionScore) {
-        return new GetStatisticResponse(id, weekStart, taskDoneCount, attendanceCount, contributionScore);
+    public static GetStatisticResponseDto of(Long id, LocalDate weekStart, int taskDoneCount, int attendanceCount, int contributionScore) {
+        return new GetStatisticResponseDto(id, weekStart, taskDoneCount, attendanceCount, contributionScore);
     }
 }

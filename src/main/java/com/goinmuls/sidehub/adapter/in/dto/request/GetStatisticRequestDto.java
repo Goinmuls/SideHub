@@ -5,7 +5,7 @@ import lombok.Getter;
 import java.time.LocalDate;
 
 @Getter
-public class GetRankingRequest {
+public class GetStatisticRequestDto {
     private Long memberId;
     private LocalDate startOfWeek;
 }

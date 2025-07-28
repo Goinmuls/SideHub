@@ -1,6 +1,6 @@
 package com.goinmuls.sidehub.application.service;
 
-import com.goinmuls.sidehub.adapter.in.dto.request.CreateWeeklyReportRequest;
+import com.goinmuls.sidehub.adapter.in.dto.request.CreateWeeklyReportRequestDto;
 import com.goinmuls.sidehub.application.port.in.CreateWeeklyReportUseCase;
 import com.goinmuls.sidehub.application.port.out.MemberOutPort;
 import com.goinmuls.sidehub.application.port.out.WeeklyReportOutPort;
@@ -24,7 +24,7 @@ public class WeeklyReportApplicationService implements CreateWeeklyReportUseCase
      * @param request
      */
     @Override
-    public void createWeeklyReport(CreateWeeklyReportRequest request) {
+    public void createWeeklyReport(CreateWeeklyReportRequestDto request) {
 
         Member member = memberOutPort.findMember(request.getMemberId());
         if(member == null) {

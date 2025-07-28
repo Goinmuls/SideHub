@@ -1,6 +1,6 @@
 package com.goinmuls.sidehub.application.mapper;
 
-import com.goinmuls.sidehub.adapter.in.dto.response.GetStatisticResponse;
+import com.goinmuls.sidehub.adapter.in.dto.response.GetStatisticResponseDto;
 import com.goinmuls.sidehub.domain.Statistic;
 import org.springframework.stereotype.Component;
 
@@ -12,12 +12,12 @@ public class StatisticMapper {
      * @param statistic (도메인)
      * @return GetStatisticResponse (응답 객체)
      */
-    public GetStatisticResponse toResponse(Statistic statistic) {
+    public GetStatisticResponseDto toResponse(Statistic statistic) {
         if(statistic == null) {
             return null;
         }
 
-        return GetStatisticResponse.of(
+        return GetStatisticResponseDto.of(
                 statistic.getId(),
                 statistic.getWeekStart(),
                 statistic.getTaskDoneCount(),

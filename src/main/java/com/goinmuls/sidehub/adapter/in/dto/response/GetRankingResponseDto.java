@@ -8,19 +8,19 @@ import lombok.NoArgsConstructor;
 import java.time.LocalDate;
 
 /**
- * 랭킹 변화 히스토리 응답 객체
+ * 랭킹 응답 객체
  */
 @Getter
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 @AllArgsConstructor(access = AccessLevel.PRIVATE)
-public class GetRankHistoryResponse {
+public class GetRankingResponseDto {
     private Long id;
     private LocalDate weekStart;
     private int rankPosition;
-    private int contributionScore;
+    private int rankChange;
 
     // factory method
-    public static GetRankHistoryResponse of(Long id, LocalDate weekStart, int rankPosition, int contributionScore) {
-        return new GetRankHistoryResponse(id, weekStart, rankPosition, contributionScore);
+    public static GetRankingResponseDto of(Long id, LocalDate weekStart, int rankPosition, int rankChange) {
+        return new GetRankingResponseDto(id, weekStart, rankPosition, rankChange);
     }
 }
