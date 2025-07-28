@@ -1,6 +1,7 @@
 package com.goinmuls.sidehub.adapter.in.rest;
 
 import com.goinmuls.sidehub.adapter.in.rest.dto.request.PostRecruitmentRequestDTO;
+import com.goinmuls.sidehub.adapter.in.rest.dto.response.PostRecruitmentResponseDTO;
 import com.goinmuls.sidehub.adapter.in.rest.dto.response.RecruitmentResponseDTO;
 import com.goinmuls.sidehub.application.port.in.GetRecruitmentUseCase;
 import com.goinmuls.sidehub.application.port.in.PostRecruitmentUseCase;
@@ -26,7 +27,8 @@ public class RecruitmentController {
     @PostMapping
     public Long postRecruitment(@RequestBody PostRecruitmentRequestDTO postRecruitmentRequestDTO) {
         Recruitment recruitment = postRecruitmentRequestDTO.toDomain();
-        return postRecruitmentUseCase.createRecruitment(recruitment);
+        PostRecruitmentResponseDTO createdRecruitmentResponseDTO = postRecruitmentUseCase.createRecruitment(recruitment);
+        return createdRecruitmentResponseDTO.getRecruitmentId();
     }
 
     /**

@@ -34,4 +34,30 @@ public class PostRecruitmentMapper {
                 recruitment.isDeleted()
         );
     }
+
+    /**
+     * 엔티티 -> 도메인 변환
+     */
+    public Recruitment toDomain(RecruitmentEntity entity) {
+        if (entity == null) {
+            return null;
+        }
+
+        return Recruitment.of(
+                entity.getRecruitmentId(),
+                entity.getName(),
+                entity.getIntroduction(),
+                entity.getDescription(),
+                entity.getSkill(),
+                entity.getStartAt(),
+                entity.getEndAt(),
+                entity.getRecruitmentStatus(),
+                entity.getRecruiterId(),
+                entity.getHeadCount(),
+                entity.getCreatedAt(),
+                entity.getEditedAt(),
+                entity.getDeletedAt(),
+                entity.isDeleted()
+        );
+    }
 }

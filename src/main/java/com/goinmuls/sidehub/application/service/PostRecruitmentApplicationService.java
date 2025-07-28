@@ -1,5 +1,7 @@
 package com.goinmuls.sidehub.application.service;
 
+import com.goinmuls.sidehub.adapter.in.rest.dto.response.PostRecruitmentResponseDTO;
+import com.goinmuls.sidehub.adapter.in.rest.mapper.PostRecruitmentResponseMapper;
 import com.goinmuls.sidehub.application.port.in.PostRecruitmentUseCase;
 import com.goinmuls.sidehub.application.port.out.PostRecruitmentOutPort;
 import com.goinmuls.sidehub.domain.Recruitment;
@@ -12,6 +14,7 @@ import org.springframework.transaction.annotation.Transactional;
 public class PostRecruitmentApplicationService implements PostRecruitmentUseCase {
 
     private final PostRecruitmentOutPort postRecruitmentOutPort;
+    private final PostRecruitmentResponseMapper postRecruitmentResponseMapper;
 
     /**
      * 모집공고 게시
@@ -20,18 +23,18 @@ public class PostRecruitmentApplicationService implements PostRecruitmentUseCase
      */
     @Transactional
     @Override
-    public Long createRecruitment(Recruitment recruitment) {
+    public PostRecruitmentResponseDTO createRecruitment(Recruitment recruitment) {
 
         if (recruitment == null) {
             throw new RuntimeException("생성할 모집 공고가 없습니다.");
         }
 
-        Long recruitmentId = postRecruitmentOutPort.save(recruitment);
+        Recruitment savedRecruitment = postRecruitmentOutPort.save(recruitment);
 
-        if (recruitmentId == null) {
+        if (savedRecruitment == null) {
             throw  new RuntimeException("모집 공고 등록에 실패했습니다.");
         }
 
-        return recruitmentId;
+        return postRecruitmentResponseMapper.toDto(savedRecruitment);
     }
 }

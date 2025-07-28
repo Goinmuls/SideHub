@@ -8,8 +8,6 @@ import com.goinmuls.sidehub.domain.Recruitment;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
 
-import java.util.List;
-
 @RequiredArgsConstructor
 @Component
 public class PostRecruitmentPersistenceAdapter implements PostRecruitmentOutPort {
@@ -23,9 +21,9 @@ public class PostRecruitmentPersistenceAdapter implements PostRecruitmentOutPort
      * @return 모집공고 id
      */
     @Override
-    public Long save(Recruitment recruitment) {
+    public Recruitment save(Recruitment recruitment) {
         RecruitmentEntity recruitmentEntity = postRecruitmentMapper.toEntity(recruitment);
         RecruitmentEntity savedRecruitmentEntity = recruitmentJpaRepository.save(recruitmentEntity);
-        return savedRecruitmentEntity.getRecruitmentId();
+        return postRecruitmentMapper.toDomain(savedRecruitmentEntity);
     }
 }
