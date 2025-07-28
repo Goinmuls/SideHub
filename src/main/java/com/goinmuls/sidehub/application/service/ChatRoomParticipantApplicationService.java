@@ -5,10 +5,10 @@ import com.goinmuls.sidehub.adapter.out.postgre.mapper.ChatRoomParticipantMapper
 import com.goinmuls.sidehub.application.port.in.GetChatRoomParticipantUseCase;
 import com.goinmuls.sidehub.application.port.out.ChatRoomParticipantOutPort;
 import com.goinmuls.sidehub.domain.ChatRoomParticipant;
-import com.goinmuls.sidehub.infrastructure.util.CollectionUtils;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+import org.springframework.util.CollectionUtils;
 
 import java.util.List;
 import java.util.NoSuchElementException;
@@ -29,7 +29,7 @@ public class ChatRoomParticipantApplicationService implements GetChatRoomPartici
     public List<GetChatRoomMemberResponseDto> getParticipantsInChatRoom(Long chatRoomId) {
         List<ChatRoomParticipant> chatRoomParticipants = chatRoomParticipantOutport.findAllByChatRoomId(chatRoomId);
 
-        if (CollectionUtils.isNullOrEmpty(chatRoomParticipants)) {
+        if (CollectionUtils.isEmpty(chatRoomParticipants)) {
             throw new NoSuchElementException("채팅방 멤버를 찾을 수 없습니다.");
         }
 
