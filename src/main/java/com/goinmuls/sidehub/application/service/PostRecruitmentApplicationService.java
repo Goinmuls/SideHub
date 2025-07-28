@@ -8,7 +8,6 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 @RequiredArgsConstructor
-@Transactional(readOnly = true)
 @Service
 public class PostRecruitmentApplicationService implements PostRecruitmentUseCase {
 
@@ -19,9 +18,10 @@ public class PostRecruitmentApplicationService implements PostRecruitmentUseCase
      * @param recruitment 모집공고
      * @return 모집공고 id
      */
+    @Transactional(readOnly = true)
     @Override
-    public Long postRecruitment(Recruitment recruitment) {
-        Long recruitmentId = postRecruitmentOutPort.post(recruitment);
+    public Long createRecruitment(Recruitment recruitment) {
+        Long recruitmentId = postRecruitmentOutPort.save(recruitment);
 
         if (recruitmentId == null) {
             throw  new RuntimeException("모집 공고 등록에 실패했습니다.");

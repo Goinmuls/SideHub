@@ -15,7 +15,7 @@ import java.util.List;
 public class PostRecruitmentPersistenceAdapter implements PostRecruitmentOutPort {
 
     private final RecruitmentJpaRepository recruitmentJpaRepository;
-    private PostRecruitmentMapper postRecruitmentMapper;
+    private final PostRecruitmentMapper postRecruitmentMapper;
 
     /**
      * 모집공고 게시
@@ -23,9 +23,9 @@ public class PostRecruitmentPersistenceAdapter implements PostRecruitmentOutPort
      * @return 모집공고 id
      */
     @Override
-    public Long post(Recruitment recruitment) {
+    public Long save(Recruitment recruitment) {
         RecruitmentEntity recruitmentEntity = postRecruitmentMapper.toEntity(recruitment);
-        recruitmentJpaRepository.save(recruitmentEntity);
-        return recruitment.getRecruitmentId();
+        RecruitmentEntity savedRecruitmentEntity = recruitmentJpaRepository.save(recruitmentEntity);
+        return savedRecruitmentEntity.getRecruitmentId();
     }
 }

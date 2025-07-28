@@ -18,13 +18,13 @@ public class RecruitmentController {
     private final GetRecruitmentUseCase getRecruitmentUseCase;
 
     /**
-     * 채용 공 게시
+     * 채용 공고 게시
      * @param recruitment
      * @return 모집공고 id
      */
     @PostMapping
     public Long postRecruitment(@RequestBody Recruitment recruitment) {
-        return postRecruitmentUseCase.postRecruitment(recruitment);
+        return postRecruitmentUseCase.createRecruitment(recruitment);
     }
 
     /**
