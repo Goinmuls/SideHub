@@ -24,6 +24,7 @@ public class ChatMessageApplicationService implements SendChatMessageUseCase {
      * @param sendChatMessageRequestDto 저장할 채팅 메세지
      * @return 저장된 채팅 메세지
      */
+    @Transactional
     @Override
     public SendChatMessageResponseDto sendChatMessage(SendChatMessageRequestDto sendChatMessageRequestDto) {
         ChatMessage chatMessage = chatMessageFactory.fromSendRequestDto(sendChatMessageRequestDto);
