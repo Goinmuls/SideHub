@@ -20,7 +20,7 @@ public class LatestChatMessagePersistenceAdapter implements LatestChatMessageOut
      * @return 최신 메세지
      */
     @Override
-    public LatestChatMessage findByChatRoomId(String chatRoomId) {
+    public LatestChatMessage findByChatRoomId(Long chatRoomId) {
         LatestChatMessageDocument latestChatMessageDocument = latestChatMessageMongoRepository.findByChatRoomId(chatRoomId);
         return latestChatMessageFactory.fromDocument(latestChatMessageDocument);
     }

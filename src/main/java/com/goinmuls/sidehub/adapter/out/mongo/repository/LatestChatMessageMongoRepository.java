@@ -6,5 +6,5 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public interface LatestChatMessageMongoRepository extends MongoRepository<LatestChatMessageDocument, String> {
-    LatestChatMessageDocument findByChatRoomId(String chatRoomId);
+    LatestChatMessageDocument findByChatRoomId(Long chatRoomId);
 }

@@ -22,7 +22,7 @@ public class LatestChatMessageApplicationService implements GetLatestChatMessage
      * @return 최신 메세지
      */
     @Override
-    public GetLatestChatMessageResponseDto getLatestChatMessage(String chatRoomId) {
+    public GetLatestChatMessageResponseDto getLatestChatMessage(Long chatRoomId) {
         LatestChatMessage latestChatMessage = latestChatMessageOutPort.findByChatRoomId(chatRoomId);
         return latestChatMessageMapper.toGetResponseDto(latestChatMessage);
     }
