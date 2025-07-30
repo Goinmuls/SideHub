@@ -41,27 +41,4 @@ public class PostRecruitmentResponseDTO {
                 headCount, createdAt, editedAt, deletedAt, isDeleted
         );
     }
-
-    public static PostRecruitmentResponseDTO from(Recruitment recruitment) {
-        if (recruitment == null) {
-            return null;
-        }
-
-        return PostRecruitmentResponseDTO.of(
-                recruitment.getRecruitmentId(),
-                recruitment.getName(),
-                recruitment.getIntroduction(),
-                recruitment.getDescription(),
-                recruitment.getSkill(),
-                recruitment.getStartAt(),
-                recruitment.getEndAt(),
-                recruitment.getRecruitmentStatus(),
-                recruitment.getRecruiterId() != null ? recruitment.getRecruiterId() : null,
-                recruitment.getHeadCount(),
-                recruitment.getCreatedAt(),
-                recruitment.getEditedAt(),
-                recruitment.getDeletedAt(),
-                recruitment.isDeleted()
-        );
-    }
 }

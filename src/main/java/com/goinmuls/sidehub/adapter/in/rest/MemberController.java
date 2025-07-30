@@ -18,5 +18,4 @@ public class MemberController {
     public void findMember(@PathVariable Long id) {
         findMemberUseCase.findMember(id);
     }
-
 }

@@ -3,6 +3,8 @@ package com.goinmuls.sidehub.adapter.in.rest;
 import com.goinmuls.sidehub.adapter.in.rest.dto.request.PostRecruitmentRequestDTO;
 import com.goinmuls.sidehub.adapter.in.rest.dto.response.PostRecruitmentResponseDTO;
 import com.goinmuls.sidehub.adapter.in.rest.dto.response.RecruitmentResponseDTO;
+import com.goinmuls.sidehub.adapter.in.rest.mapper.Mapper;
+import com.goinmuls.sidehub.adapter.out.postgre.entity.RecruitmentEntity;
 import com.goinmuls.sidehub.application.port.in.GetRecruitmentUseCase;
 import com.goinmuls.sidehub.application.port.in.PostRecruitmentUseCase;
 import com.goinmuls.sidehub.domain.Recruitment;
@@ -18,6 +20,7 @@ public class RecruitmentController {
 
     private final PostRecruitmentUseCase postRecruitmentUseCase;
     private final GetRecruitmentUseCase getRecruitmentUseCase;
+    private final Mapper mapper;
 
     /**
      * 채용 공고 게시
@@ -25,10 +28,10 @@ public class RecruitmentController {
      * @return 모집공고 id
      */
     @PostMapping
-    public Long postRecruitment(@RequestBody PostRecruitmentRequestDTO postRecruitmentRequestDTO) {
-        Recruitment recruitment = postRecruitmentRequestDTO.toDomain();
+    public RecruitmentEntity postRecruitment(@RequestBody PostRecruitmentRequestDTO postRecruitmentRequestDTO) {
+        Recruitment recruitment = mapper.toDomain(postRecruitmentRequestDTO);
         PostRecruitmentResponseDTO createdRecruitmentResponseDTO = postRecruitmentUseCase.createRecruitment(recruitment);
-        return createdRecruitmentResponseDTO.getRecruitmentId();
+        return mapper.toEntity(createdRecruitmentResponseDTO);
     }
 
     /**

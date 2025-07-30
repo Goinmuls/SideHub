@@ -27,27 +27,4 @@ public class PostRecruitmentRequestDTO {
     private LocalDateTime editedAt;
     private LocalDateTime deletedAt;
     private boolean isDeleted;
-
-    /**
-     * DTO -> 도메인 객체 변환
-     * @return Recruitment 도메인 객체
-     */
-    public Recruitment toDomain() {
-        return Recruitment.of(
-                recruitmentId,
-                name,
-                introduction,
-                description,
-                skill,
-                startAt,
-                endAt,
-                recruitmentStatus,
-                recruiterId,
-                headCount,
-                createdAt,
-                editedAt,
-                deletedAt,
-                isDeleted
-        );
-    }
 }
