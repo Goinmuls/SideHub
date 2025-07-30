@@ -1,0 +1,33 @@
+package com.goinmuls.sidehub.adapter.out.postgre.mapper;
+
+import com.goinmuls.sidehub.adapter.in.rest.dto.response.GetFileMetaResponseDto;
+import com.goinmuls.sidehub.domain.FileMeta;
+import org.springframework.stereotype.Component;
+
+@Component
+public class FileMetaMapper {
+
+    /**
+     * 도메인 -> 조회 응답 dto 변환
+     * @param fileMeta 도메인
+     * @return 조회 응답 dto
+     */
+    public GetFileMetaResponseDto toFindResponseDto(FileMeta fileMeta) {
+        if (fileMeta == null) {
+            return null;
+        }
+
+        return GetFileMetaResponseDto.of(
+                fileMeta.getFileMetaId(),
+                fileMeta.getMemberId(),
+                fileMeta.getFilePath(),
+                fileMeta.getOriginalSize(),
+                fileMeta.isCompressed(),
+                fileMeta.getCompressedSize(),
+                fileMeta.getMimeType(),
+                fileMeta.getSize(),
+                fileMeta.getCreatedAt(),
+                fileMeta.getDeletedAt()
+        );
+    }
+}
