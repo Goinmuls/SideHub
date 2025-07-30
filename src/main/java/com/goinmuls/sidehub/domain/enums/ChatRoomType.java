@@ -8,9 +8,9 @@ import lombok.NoArgsConstructor;
 @Getter
 @AllArgsConstructor(access = AccessLevel.PRIVATE)
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
-public enum FileMimeType {
-    JPG("JPG", "이미지 jpg 타입"),
-    PNG("PNG", "이미지 png 타입");
+public enum ChatRoomType {
+    PRIVATE("PRIVATE", "개인"),
+    GROUP("GROUP", "단체");
 
     private String code;
     private String description;
