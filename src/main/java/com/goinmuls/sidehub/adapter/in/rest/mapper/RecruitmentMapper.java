@@ -1,6 +1,6 @@
 package com.goinmuls.sidehub.adapter.in.rest.mapper;
 
-import com.goinmuls.sidehub.adapter.in.rest.dto.request.PostRecruitmentRequestDTO;
+import com.goinmuls.sidehub.adapter.in.rest.dto.request.CreateRecruitmentRequestDTO;
 import com.goinmuls.sidehub.adapter.in.rest.dto.response.PostRecruitmentResponseDTO;
 import com.goinmuls.sidehub.adapter.out.postgre.entity.RecruitmentEntity;
 import com.goinmuls.sidehub.domain.Recruitment;
@@ -10,7 +10,7 @@ import org.springframework.stereotype.Component;
  * 도메인 ↔ DTO 변환
  */
 @Component
-public class Mapper {
+public class RecruitmentMapper {
 
     public PostRecruitmentResponseDTO toDto(Recruitment recruitment) {
 
@@ -35,27 +35,27 @@ public class Mapper {
         );
     }
 
-    public Recruitment toDomain(PostRecruitmentRequestDTO postRecruitmentRequestDTO) {
+    public Recruitment toDomain(CreateRecruitmentRequestDTO createRecruitmentRequestDTO) {
 
-        if (postRecruitmentRequestDTO == null) {
+        if (createRecruitmentRequestDTO == null) {
             return null;
         }
 
         return Recruitment.of(
-                postRecruitmentRequestDTO.getRecruitmentId(),
-                postRecruitmentRequestDTO.getName(),
-                postRecruitmentRequestDTO.getIntroduction(),
-                postRecruitmentRequestDTO.getDescription(),
-                postRecruitmentRequestDTO.getSkill(),
-                postRecruitmentRequestDTO.getStartAt(),
-                postRecruitmentRequestDTO.getEndAt(),
-                postRecruitmentRequestDTO.getRecruitmentStatus(),
-                postRecruitmentRequestDTO.getRecruiterId(),
-                postRecruitmentRequestDTO.getHeadCount(),
-                postRecruitmentRequestDTO.getCreatedAt(),
-                postRecruitmentRequestDTO.getEditedAt(),
-                postRecruitmentRequestDTO.getDeletedAt(),
-                postRecruitmentRequestDTO.isDeleted()
+                createRecruitmentRequestDTO.getRecruitmentId(),
+                createRecruitmentRequestDTO.getTitle(),
+                createRecruitmentRequestDTO.getIntroduction(),
+                createRecruitmentRequestDTO.getDescription(),
+                createRecruitmentRequestDTO.getSkill(),
+                createRecruitmentRequestDTO.getStartAt(),
+                createRecruitmentRequestDTO.getEndAt(),
+                createRecruitmentRequestDTO.getRecruitmentStatus(),
+                createRecruitmentRequestDTO.getRecruiterId(),
+                createRecruitmentRequestDTO.getHeadCount(),
+                createRecruitmentRequestDTO.getCreatedAt(),
+                createRecruitmentRequestDTO.getEditedAt(),
+                createRecruitmentRequestDTO.getDeletedAt(),
+                createRecruitmentRequestDTO.isDeleted()
         );
     }
 
@@ -67,7 +67,7 @@ public class Mapper {
 
         return RecruitmentEntity.of(
                 postRecruitmentResponseDTO.getRecruitmentId(),
-                postRecruitmentResponseDTO.getName(),
+                postRecruitmentResponseDTO.getTitle(),
                 postRecruitmentResponseDTO.getIntroduction(),
                 postRecruitmentResponseDTO.getDescription(),
                 postRecruitmentResponseDTO.getSkill(),

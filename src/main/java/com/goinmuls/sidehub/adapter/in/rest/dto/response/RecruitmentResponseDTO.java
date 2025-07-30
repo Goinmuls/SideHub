@@ -20,7 +20,7 @@ public class RecruitmentResponseDTO {
     private LocalDateTime startAt;
     private LocalDateTime endAt;
     private RecruitmentStatus recruitmentStatus;
-    private String recruiterId;
+    private String userId;
     private int headCount;
     private LocalDateTime createdAt;
     private LocalDateTime editedAt;
@@ -30,11 +30,11 @@ public class RecruitmentResponseDTO {
     public static RecruitmentResponseDTO of(
             Long recruitmentId, String name, String introduction,
             String description, String skill, LocalDateTime startAt, LocalDateTime endAt,
-            RecruitmentStatus recruitmentStatus, String recruiterId, int headCount,
+            RecruitmentStatus recruitmentStatus, String userId, int headCount,
             LocalDateTime createdAt, LocalDateTime editedAt, LocalDateTime deletedAt, boolean isDeleted) {
         return new RecruitmentResponseDTO(
                 recruitmentId, name, introduction, description,
-                skill, startAt, endAt, recruitmentStatus, recruiterId,
+                skill, startAt, endAt, recruitmentStatus, userId,
                 headCount, createdAt, editedAt, deletedAt, isDeleted);
     }
 }

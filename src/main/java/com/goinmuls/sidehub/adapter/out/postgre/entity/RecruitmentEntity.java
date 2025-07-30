@@ -24,8 +24,8 @@ public class RecruitmentEntity {
     private Long recruitmentId;
 
     @Comment("공고명")
-    @Column(name = "name")
-    private String name;
+    @Column(name = "title")
+    private String title;
 
     @Comment("한 줄 소개")
     @Column(name = "introduction")
@@ -51,9 +51,9 @@ public class RecruitmentEntity {
     @Column(name = "status")
     private RecruitmentStatus recruitmentStatus;
 
-    @Comment("생성자 id")
-    @Column(name = "recruiter_id")
-    private String recruiterId;
+    @Comment("로그인 유저 id")
+    @Column(name = "user_id")
+    private String userId;
 
     @Comment("총 채용 인원")
     @Column(name = "head_count")

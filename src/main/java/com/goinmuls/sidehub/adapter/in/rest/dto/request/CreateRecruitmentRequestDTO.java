@@ -7,14 +7,13 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 
 import java.time.LocalDateTime;
-import com.goinmuls.sidehub.domain.Recruitment;
 
 @Getter
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 @AllArgsConstructor(access = AccessLevel.PRIVATE)
-public class PostRecruitmentRequestDTO {
+public class CreateRecruitmentRequestDTO {
     private Long recruitmentId;
-    private String name;
+    private String title;
     private String introduction;
     private String description;
     private String skill;

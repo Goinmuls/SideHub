@@ -45,14 +45,14 @@ public class PostRecruitmentMapper {
 
         return Recruitment.of(
                 entity.getRecruitmentId(),
-                entity.getName(),
+                entity.getTitle(),
                 entity.getIntroduction(),
                 entity.getDescription(),
                 entity.getSkill(),
                 entity.getStartAt(),
                 entity.getEndAt(),
                 entity.getRecruitmentStatus(),
-                entity.getRecruiterId(),
+                entity.getUserId(),
                 entity.getHeadCount(),
                 entity.getCreatedAt(),
                 entity.getEditedAt(),

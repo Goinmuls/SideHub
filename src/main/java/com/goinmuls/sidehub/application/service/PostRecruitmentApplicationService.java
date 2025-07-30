@@ -1,7 +1,7 @@
 package com.goinmuls.sidehub.application.service;
 
 import com.goinmuls.sidehub.adapter.in.rest.dto.response.PostRecruitmentResponseDTO;
-import com.goinmuls.sidehub.adapter.in.rest.mapper.Mapper;
+import com.goinmuls.sidehub.adapter.in.rest.mapper.RecruitmentMapper;
 import com.goinmuls.sidehub.application.port.in.PostRecruitmentUseCase;
 import com.goinmuls.sidehub.application.port.out.MemberOutPort;
 import com.goinmuls.sidehub.application.port.out.PostRecruitmentOutPort;
@@ -17,7 +17,7 @@ public class PostRecruitmentApplicationService implements PostRecruitmentUseCase
 
     private final PostRecruitmentOutPort postRecruitmentOutPort;
     private final MemberOutPort memberOutPort;
-    private final Mapper mapper;
+    private final RecruitmentMapper recruitmentMapper;
 
     /**
      * 모집공고 게시
@@ -44,6 +44,6 @@ public class PostRecruitmentApplicationService implements PostRecruitmentUseCase
             throw  new RuntimeException("모집 공고 등록에 실패했습니다.");
         }
 
-        return mapper.toDto(savedRecruitment);
+        return recruitmentMapper.toDto(savedRecruitment);
     }
 }
