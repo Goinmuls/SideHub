@@ -22,6 +22,6 @@ public class LatestChatMessageController {
      */
     @GetMapping("/by-chat-room/{chatRoomId}")
     public GetLatestChatMessageResponseDto getLatestChatMessage(@PathVariable Long chatRoomId) {
-        return getLatestChatMessageUseCase.(chatRoomId);
+        return getLatestChatMessageUseCase.getLatestChatMessage(chatRoomId);
     }
 }
