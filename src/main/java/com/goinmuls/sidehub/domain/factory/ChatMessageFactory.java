@@ -16,6 +16,10 @@ public class ChatMessageFactory {
      * @return 도메인
      */
     public ChatMessage fromSendRequestDto(SendChatMessageRequestDto sendChatMessageRequestDto) {
+        if (sendChatMessageRequestDto == null) {
+            return null;
+        }
+
         return ChatMessage.of(
                 null,
                 sendChatMessageRequestDto.getChatRoomId(),
@@ -37,6 +41,10 @@ public class ChatMessageFactory {
      * @return 도메인
      */
     public ChatMessage fromDocument(ChatMessageDocument chatMessageDocument) {
+        if (chatMessageDocument == null) {
+            return null;
+        }
+
         return ChatMessage.of(
                 chatMessageDocument.getId(),
                 chatMessageDocument.getChatRoomId(),

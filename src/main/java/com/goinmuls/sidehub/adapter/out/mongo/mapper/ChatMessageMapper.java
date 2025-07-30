@@ -14,6 +14,10 @@ public class ChatMessageMapper {
      * @return 다큐먼트
      */
     public ChatMessageDocument toDocument(ChatMessage chatMessage) {
+        if (chatMessage == null) {
+            return null;
+        }
+
         return ChatMessageDocument.of(
                 chatMessage.getId(),
                 chatMessage.getChatRoomId(),
@@ -35,6 +39,10 @@ public class ChatMessageMapper {
      * @return 저장 응답 dto
      */
     public SendChatMessageResponseDto toSendResponseDto(ChatMessage chatMessage) {
+        if (chatMessage == null) {
+            return null;
+        }
+
         return SendChatMessageResponseDto.of(
                 chatMessage.getId(),
                 chatMessage.getChatRoomId(),

@@ -13,6 +13,10 @@ public class LatestChatMessageMapper {
      * @return 조회 응답 dto
      */
     public GetLatestChatMessageResponseDto toGetResponseDto(LatestChatMessage latestChatMessage) {
+        if (latestChatMessage == null) {
+            return null;
+        }
+
         return GetLatestChatMessageResponseDto.of(
                 latestChatMessage.getId(),
                 latestChatMessage.getChatRoomId(),

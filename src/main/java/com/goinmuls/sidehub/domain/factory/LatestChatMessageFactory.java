@@ -13,6 +13,10 @@ public class LatestChatMessageFactory {
      * @return 도메인
      */
     public LatestChatMessage fromDocument(LatestChatMessageDocument latestChatMessageDocument) {
+        if (latestChatMessageDocument == null) {
+            return null;
+        }
+        
         return LatestChatMessage.of(
                 latestChatMessageDocument.getId(),
                 latestChatMessageDocument.getChatRoomId(),
